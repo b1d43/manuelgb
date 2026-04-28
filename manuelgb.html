@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel García Benítez — Pintor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --parchment: #ede6d6;
+      --gold: #b8973a;
+      --gold-light: #d4af5a;
+      --brown-dark: #2c1e0f;
+      --brown-mid: #5a3e28;
+      --brown-light: #8a6a4a;
+      --ink: #1a1208;
+      --shadow: rgba(44, 30, 15, 0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.45;
+    }
+
+    /* ─── ORNAMENTAL DIVIDER ─── */
+    .ornament {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.4rem;
+      letter-spacing: 0.5em;
+      margin: 2.5rem 0;
+      opacity: 0.7;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184, 151, 58, 0.25);
+      padding: 0.9rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--brown-mid);
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f0e8d5 0%, #e8dcc8 50%, #ddd0b8 100%);
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 18vw, 22rem);
+      font-weight: 300;
+      color: rgba(184, 151, 58, 0.07);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--brown-dark);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--brown-mid);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--brown-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 3rem;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 3rem;
+      opacity: 0.6;
+    }
+
+    .btn-scroll {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 3px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .btn-scroll:hover { color: var(--gold); }
+
+    /* ─── MUSIC PLAYER ─── */
+    .music-bar {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(44, 30, 15, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(184, 151, 58, 0.3);
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem 0.6rem 0.8rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .music-bar:hover { background: rgba(44, 30, 15, 0.96); }
+
+    .music-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .music-btn:hover { background: rgba(184, 151, 58, 0.2); }
+
+    .music-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: rgba(245, 240, 232, 0.7);
+      white-space: nowrap;
+    }
+
+    .music-waves {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 16px;
+    }
+
+    .music-waves span {
+      display: block;
+      width: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      animation: wave 1.2s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .music-waves span:nth-child(1) { height: 4px; animation-delay: 0s; }
+    .music-waves span:nth-child(2) { height: 10px; animation-delay: 0.15s; }
+    .music-waves span:nth-child(3) { height: 16px; animation-delay: 0.3s; }
+    .music-waves span:nth-child(4) { height: 10px; animation-delay: 0.45s; }
+    .music-waves span:nth-child(5) { height: 6px; animation-delay: 0.6s; }
+
+    .music-waves.paused span { animation-play-state: paused; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 7rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--brown-dark);
+      line-height: 1.1;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--brown-mid); }
+
+    /* ─── BIOGRAPHY ─── */
+    #biografia {
+      background: var(--parchment);
+      border-top: 1px solid rgba(184, 151, 58, 0.15);
+      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+    }
+
+    .bio-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .bio-photo-wrap {
+      position: relative;
+    }
+
+    .bio-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      filter: sepia(15%);
+    }
+
+    .bio-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, #d4c5a9, #c4b090);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown-light);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      gap: 1rem;
+    }
+
+    .bio-photo-placeholder svg { opacity: 0.4; }
+
+    .bio-photo-frame {
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(184, 151, 58, 0.35);
+      pointer-events: none;
+    }
+
+    .bio-photo-caption {
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--brown-light);
+      letter-spacing: 0.08em;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .bio-text p {
+      margin-bottom: 1.4rem;
+      color: var(--brown-dark);
+      font-size: 1.05rem;
+    }
+
+    .bio-text p:first-of-type::first-letter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      float: left;
+      line-height: 0.75;
+      margin: 0.1em 0.1em 0 0;
+      color: var(--gold);
+    }
+
+    .bio-facts {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      border-top: 1px solid rgba(184, 151, 58, 0.25);
+      padding-top: 2rem;
+    }
+
+    .bio-fact-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .bio-fact-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--brown-dark);
+    }
+
+    /* ─── GALERÍA ─── */
+    #galeria { background: var(--cream); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 200px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--parchment);
+    }
+
+    .gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
+    .gallery-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
+    .gallery-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 3; }
+    .gallery-item:nth-child(4) { grid-column: 6 / 9; grid-row: 2 / 3; }
+    .gallery-item:nth-child(5) { grid-column: 1 / 5; grid-row: 3 / 4; }
+    .gallery-item:nth-child(6) { grid-column: 5 / 9; grid-row: 3 / 4; }
+    .gallery-item:nth-child(7) { grid-column: 9 / 13; grid-row: 3 / 4; }
+
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-placeholder svg { opacity: 0.25; }
+
+    /* Colores impresionistas para placeholders */
+    .gallery-item:nth-child(1) .gallery-placeholder { background: linear-gradient(135deg, #c8d8a0, #a8c070, #d4b870); }
+    .gallery-item:nth-child(2) .gallery-placeholder { background: linear-gradient(135deg, #a0b8d8, #7090c0, #c8a890); }
+    .gallery-item:nth-child(3) .gallery-placeholder { background: linear-gradient(135deg, #d8a090, #c07060, #e8c880); }
+    .gallery-item:nth-child(4) .gallery-placeholder { background: linear-gradient(135deg, #b8d0a0, #90b878, #d0c890); }
+    .gallery-item:nth-child(5) .gallery-placeholder { background: linear-gradient(135deg, #d0b8d8, #a890c0, #c8d8e8); }
+    .gallery-item:nth-child(6) .gallery-placeholder { background: linear-gradient(135deg, #e8d0a0, #d0a860, #e8c070); }
+    .gallery-item:nth-child(7) .gallery-placeholder { background: linear-gradient(135deg, #a8c8b8, #80b090, #c0d8a8); }
+
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.4s ease;
+      filter: sepia(8%);
+      display: block;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:hover .gallery-placeholder {
+      transform: scale(1.04);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(44, 30, 15, 0);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+      transition: background 0.4s;
+    }
+
+    .gallery-item:hover .gallery-overlay { background: rgba(44, 30, 15, 0.55); }
+
+    .gallery-caption {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(20, 12, 4, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox-img {
+      max-width: 85vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid rgba(184, 151, 58, 0.2);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 2rem; right: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: rgba(245, 240, 232, 0.5);
+      cursor: pointer;
+      background: none; border: none;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover { color: var(--gold); }
+
+    /* ─── PRENSA ─── */
+    #prensa {
+      background: var(--parchment);
+      border-top: 1px solid rgba(184, 151, 58, 0.15);
+      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+    }
+
+    .press-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .press-card {
+      background: var(--cream);
+      border: 1px solid rgba(184, 151, 58, 0.2);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+
+    .press-card:hover {
+      box-shadow: 0 12px 40px var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .press-clipping {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: sepia(20%) contrast(0.95);
+    }
+
+    .press-clipping-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(145deg, #d8d0c0, #c8c0b0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: var(--brown-light);
+    }
+
+    .press-clipping-placeholder svg { opacity: 0.3; }
+
+    .press-info {
+      padding: 1.2rem 1.4rem;
+    }
+
+    .press-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .press-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--brown-dark);
+      line-height: 1.3;
+      font-style: italic;
+    }
+
+    .press-date {
+      font-size: 0.78rem;
+      color: var(--brown-light);
+      margin-top: 0.6rem;
+    }
+
+    /* ─── CONTACTO ─── */
+    #contacto { background: var(--brown-dark); }
+    #contacto .section-label { color: var(--gold-light); }
+    #contacto .section-title { color: var(--cream); }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text {
+      color: rgba(245, 240, 232, 0.6);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .contact-details { margin-top: 2rem; }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      color: rgba(245, 240, 232, 0.7);
+      font-size: 0.95rem;
+    }
+
+    .contact-item-icon { color: var(--gold); margin-top: 0.1em; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(245, 240, 232, 0.06);
+      border: 1px solid rgba(184, 151, 58, 0.2);
+      color: var(--cream);
+      padding: 0.9rem 1.2rem;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(245, 240, 232, 0.3); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--gold); }
+
+    .btn-enviar {
+      align-self: flex-start;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-enviar:hover { background: var(--gold); color: var(--brown-dark); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #160e05;
+      text-align: center;
+      padding: 2.5rem;
+      color: rgba(245, 240, 232, 0.3);
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+    }
+
+    footer span { color: var(--gold); opacity: 0.5; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0.8rem 1.5rem; }
+      nav ul { gap: 1.2rem; }
+      .bio-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+      .gallery-item { grid-column: auto !important; grid-row: auto !important; }
+      .press-grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .bio-facts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÚSICA (iframe oculto de YouTube) -->
+  <iframe id="vivaldi-audio"
+    src=""
+    style="display:none;"
+    allow="autoplay"
+    title="Música de fondo">
+  </iframe>
+
+  <!-- PLAYER FLOTANTE -->
+  <div class="music-bar" onclick="toggleMusic()">
+    <button class="music-btn" aria-label="Reproducir / Pausar">▶</button>
+    <span class="music-label">Vivaldi · Las Cuatro Estaciones</span>
+    <div class="music-waves paused" id="waves">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <div class="nav-brand">Manuel García Benítez</div>
+    <ul>
+      <li><a href="#biografia">Biografía</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#prensa">Prensa</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" style="opacity:1; transform:none; padding:0;">
+    <div class="hero-bg-text">Pintor</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Aranjuez · Madrid · España</p>
+      <h1 class="hero-name">Manuel<br><em>García Benítez</em></h1>
+      <p class="hero-subtitle">Pintor impresionista · Desde 1955</p>
+      <div class="hero-line"></div>
+      <a href="#biografia" class="btn-scroll">Conocer al artista</a>
+    </div>
+  </section>
+
+  <!-- BIOGRAFÍA -->
+  <section id="biografia">
+    <div class="container">
+      <p class="section-label">El artista</p>
+      <h2 class="section-title">Una vida <em>dedicada al color</em></h2>
+      <div class="bio-layout">
+
+        <div class="bio-photo-wrap">
+          <div class="bio-photo-frame"></div>
+          <!-- Sustituir por: <img class="bio-photo" src="foto-manuel.jpg" alt="Manuel García Benítez"> -->
+          <div class="bio-photo-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+            <span>Fotografía del artista</span>
+          </div>
+          <p class="bio-photo-caption">Manuel García Benítez, Aranjuez</p>
+        </div>
+
+        <div class="bio-text">
+          <p>
+            Nacido en 1955, Manuel García Benítez ha consagrado su vida al estudio de la luz y el color a través de la pintura impresionista. Criado entre los jardines del Real Sitio de Aranjuez, la naturaleza exuberante de este lugar marcó profundamente su sensibilidad artística desde la infancia.
+          </p>
+          <p>
+            Formado en la tradición clásica europea, su obra bebe de los grandes maestros del impresionismo francés — Monet, Pissarro, Sisley — sin renunciar a la identidad paisajística castellana. Sus cuadros capturan la quietud del Tajo, la luz dorada de los jardines reales y la vida cotidiana de su entorno con una paleta vibrante y una pincelada libre.
+          </p>
+          <p>
+            A lo largo de su trayectoria ha expuesto en numerosas galerías y ha recibido el reconocimiento de la crítica especializada. Su obra forma parte de colecciones privadas en España y el extranjero.
+          </p>
+
+          <div class="bio-facts">
+            <div>
+              <p class="bio-fact-label">Nacimiento</p>
+              <p class="bio-fact-value">1955, España</p>
+            </div>
+            <div>
+              <p class="bio-fact-label">Residencia</p>
+              <p class="bio-fact-value">Aranjuez, Madrid</p>
+            </div>
+            <div>
+              <p class="bio-fact-label">Estilo</p>
+              <p class="bio-fact-value">Impresionismo</p>
+            </div>
+            <div>
+              <p class="bio-fact-label">Técnica</p>
+              <p class="bio-fact-value">Óleo sobre lienzo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="container">
+      <p class="section-label">Obra</p>
+      <h2 class="section-title">Galería <em>de cuadros</em></h2>
+      <div class="ornament">✦ · ✦</div>
+
+      <div class="gallery-grid">
+
+        <!-- Sustituir cada .gallery-placeholder por <img src="cuadro1.jpg" alt="Título"> -->
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Jardines del Tajo», 2018</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Amanecer en Aranjuez», 2020</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Luz de Otoño», 2019</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Ribera del Tajo», 2021</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Mercado de flores», 2017</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«Tarde en el Palacio», 2022</span></div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <div class="gallery-overlay"><span class="gallery-caption">«El Parterre», 2023</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRENSA -->
+  <section id="prensa">
+    <div class="container">
+      <p class="section-label">Reconocimientos</p>
+      <h2 class="section-title">En la <em>prensa</em></h2>
+      <div class="ornament">✦ · ✦</div>
+
+      <div class="press-grid">
+
+        <!-- Sustituir .press-clipping-placeholder por <img class="press-clipping" src="recorte1.jpg"> -->
+
+        <div class="press-card">
+          <div class="press-clipping-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
+          </div>
+          <div class="press-info">
+            <p class="press-source">ABC Cultural</p>
+            <p class="press-headline">«El pintor que captura el alma de Aranjuez»</p>
+            <p class="press-date">Marzo 2022</p>
+          </div>
+        </div>
+
+        <div class="press-card">
+          <div class="press-clipping-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
+          </div>
+          <div class="press-info">
+            <p class="press-source">El País</p>
+            <p class="press-headline">«García Benítez y la luz del Tajo»</p>
+            <p class="press-date">Octubre 2020</p>
+          </div>
+        </div>
+
+        <div class="press-card">
+          <div class="press-clipping-placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
+          </div>
+          <div class="press-info">
+            <p class="press-source">Revista Arte Español</p>
+            <p class="press-headline">«El impresionismo vivo en la Comunidad de Madrid»</p>
+            <p class="press-date">Enero 2019</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <p class="section-label">Escribir al artista</p>
+      <h2 class="section-title" style="color:var(--cream);">Contacto</h2>
+      <div class="contact-layout">
+        <div>
+          <p class="contact-text">
+            Para consultas sobre adquisición de obra, exposiciones o simplemente para compartir su admiración por la pintura, no dude en ponerse en contacto con Manuel.
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-item-icon">✉</span>
+              <span>contacto@manuelgarciabenitez.es</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-icon">◎</span>
+              <span>Aranjuez, Comunidad de Madrid</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="return false;">
+          <input type="text" placeholder="Su nombre" />
+          <input type="email" placeholder="Su correo electrónico" />
+          <textarea rows="5" placeholder="Su mensaje…"></textarea>
+          <button class="btn-enviar" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Manuel García Benítez · Aranjuez, Madrid <span>·</span> Todos los derechos reservados</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  </div>
+
+  <script>
+    // ── Scroll reveal ──
+    const sections = document.querySelectorAll('section:not(#hero)');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+
+    // ── Música ──
+    let playing = false;
+    const YOUTUBE_ID = 'GRxofEmo3HA'; // Las Cuatro Estaciones - Vivaldi
+
+    function toggleMusic() {
+      const iframe = document.getElementById('vivaldi-audio');
+      const waves = document.getElementById('waves');
+      const btn = document.querySelector('.music-btn');
+
+      if (!playing) {
+        iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&controls=0&loop=1&playlist=${YOUTUBE_ID}`;
+        waves.classList.remove('paused');
+        btn.textContent = '⏸';
+      } else {
+        iframe.src = '';
+        waves.classList.add('paused');
+        btn.textContent = '▶';
+      }
+      playing = !playing;
+    }
+
+    // ── Lightbox ──
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        if (img) {
+          document.getElementById('lightbox-img').src = img.src;
+          document.getElementById('lightbox').classList.add('open');
+        }
+      });
+    });
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
