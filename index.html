@@ -387,94 +387,119 @@
     /* ─── GALERÍA ─── */
     #galeria { background: var(--cream); }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 200px;
-      gap: 16px;
+    /* ─── MASONRY GALLERY ─── */
+    .masonry-grid {
+      columns: 4;
+      column-gap: 14px;
     }
 
-    .gallery-item {
-      overflow: hidden;
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 14px;
       position: relative;
+      overflow: hidden;
       cursor: pointer;
       background: var(--parchment);
-    }
-
-    .gallery-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
-    .gallery-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
-    .gallery-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 3; }
-    .gallery-item:nth-child(4) { grid-column: 6 / 9; grid-row: 2 / 3; }
-    .gallery-item:nth-child(5) { grid-column: 1 / 5; grid-row: 3 / 4; }
-    .gallery-item:nth-child(6) { grid-column: 5 / 9; grid-row: 3 / 4; }
-    .gallery-item:nth-child(7) { grid-column: 9 / 13; grid-row: 3 / 4; }
-
-    .gallery-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .gallery-placeholder svg { opacity: 0.25; }
-
-    /* Colores impresionistas para placeholders */
-    .gallery-item:nth-child(1) .gallery-placeholder { background: linear-gradient(135deg, #c8d8a0, #a8c070, #d4b870); }
-    .gallery-item:nth-child(2) .gallery-placeholder { background: linear-gradient(135deg, #a0b8d8, #7090c0, #c8a890); }
-    .gallery-item:nth-child(3) .gallery-placeholder { background: linear-gradient(135deg, #d8a090, #c07060, #e8c880); }
-    .gallery-item:nth-child(4) .gallery-placeholder { background: linear-gradient(135deg, #b8d0a0, #90b878, #d0c890); }
-    .gallery-item:nth-child(5) .gallery-placeholder { background: linear-gradient(135deg, #d0b8d8, #a890c0, #c8d8e8); }
-    .gallery-item:nth-child(6) .gallery-placeholder { background: linear-gradient(135deg, #e8d0a0, #d0a860, #e8c070); }
-    .gallery-item:nth-child(7) .gallery-placeholder { background: linear-gradient(135deg, #a8c8b8, #80b090, #c0d8a8); }
-
-    .gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease, filter 0.4s ease;
-      filter: sepia(8%);
       display: block;
     }
 
-    .gallery-item:hover img,
-    .gallery-item:hover .gallery-placeholder {
-      transform: scale(1.04);
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease, filter 0.4s ease;
+      filter: sepia(6%);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease, filter 0.4s ease;
     }
 
-    .gallery-overlay {
+    .masonry-item img.loaded { opacity: 1; }
+
+    .masonry-item:hover img { transform: scale(1.04); filter: sepia(0%); }
+
+    .masonry-overlay {
       position: absolute;
       inset: 0;
       background: rgba(44, 30, 15, 0);
       display: flex;
       align-items: flex-end;
-      padding: 1.2rem;
+      padding: 1rem;
       transition: background 0.4s;
     }
 
-    .gallery-item:hover .gallery-overlay { background: rgba(44, 30, 15, 0.55); }
+    .masonry-item:hover .masonry-overlay { background: rgba(44, 30, 15, 0.6); }
 
-    .gallery-caption {
+    .masonry-caption {
       font-family: 'Cormorant Garamond', serif;
       color: var(--cream);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-style: italic;
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(6px);
       transition: opacity 0.3s, transform 0.3s;
     }
 
-    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+    .masonry-item:hover .masonry-caption { opacity: 1; transform: translateY(0); }
+
+    /* Skeleton loader */
+    .masonry-item .skeleton {
+      width: 100%;
+      background: linear-gradient(90deg, #e8dcc8 25%, #f0e8d5 50%, #e8dcc8 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Sentinel para infinite scroll */
+    #gallery-sentinel {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .loading-spinner {
+      width: 28px; height: 28px;
+      border: 2px solid rgba(184, 151, 58, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    .loading-spinner.active { display: block; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .gallery-end-msg {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--brown-light);
+      text-transform: uppercase;
+      display: none;
+    }
+
+    .gallery-end-msg.visible { display: block; }
+
+    @media (max-width: 900px) { .masonry-grid { columns: 3; } }
+    @media (max-width: 600px) { .masonry-grid { columns: 2; } }
 
     /* ─── LIGHTBOX ─── */
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 500;
-      background: rgba(20, 12, 4, 0.94);
+      background: rgba(12, 7, 2, 0.96);
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 1.5rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
@@ -482,19 +507,64 @@
 
     .lightbox.open { opacity: 1; pointer-events: all; }
 
-    .lightbox-img {
-      max-width: 85vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border: 1px solid rgba(184, 151, 58, 0.2);
+    .lb-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 80vw;
     }
+
+    .lightbox-img {
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 1px solid rgba(184, 151, 58, 0.15);
+      display: block;
+    }
+
+    .lb-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 0.8rem;
+      padding: 0 0.2rem;
+    }
+
+    .lb-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.6);
+      font-size: 1rem;
+    }
+
+    .lb-counter {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: rgba(184, 151, 58, 0.5);
+    }
+
+    .lb-arrow {
+      background: none;
+      border: 1px solid rgba(184, 151, 58, 0.2);
+      color: rgba(245, 240, 232, 0.5);
+      font-size: 1.4rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .lb-arrow:hover { color: var(--gold); border-color: var(--gold); }
 
     .lightbox-close {
       position: absolute;
-      top: 2rem; right: 2.5rem;
+      top: 1.5rem; right: 2rem;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      color: rgba(245, 240, 232, 0.5);
+      font-size: 1.8rem;
+      color: rgba(245, 240, 232, 0.4);
       cursor: pointer;
       background: none; border: none;
       transition: color 0.2s;
@@ -777,59 +847,11 @@
       <h2 class="section-title">Galería <em>de cuadros</em></h2>
       <div class="ornament">✦ · ✦</div>
 
-      <div class="gallery-grid">
+      <div class="masonry-grid" id="masonry-grid"></div>
 
-        <!-- Sustituir cada .gallery-placeholder por <img src="cuadro1.jpg" alt="Título"> -->
-
-      <div class="gallery-item">
-        <img src="images/cuadro1.jpg" alt="Jardines del Tajo">
-          <div class="gallery-overlay">
-            <span class="gallery-caption">«Jardines del Tajo», 2018</span>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«Amanecer en Aranjuez», 2020</span></div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«Luz de Otoño», 2019</span></div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«Ribera del Tajo», 2021</span></div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«Mercado de flores», 2017</span></div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«Tarde en el Palacio», 2022</span></div>
-        </div>
-
-        <div class="gallery-item">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="gallery-overlay"><span class="gallery-caption">«El Parterre», 2023</span></div>
-        </div>
-
+      <div id="gallery-sentinel">
+        <div class="loading-spinner" id="spinner"></div>
+        <p class="gallery-end-msg" id="gallery-end">✦ &nbsp; Fin de la colección &nbsp; ✦</p>
       </div>
     </div>
   </section>
@@ -924,26 +946,33 @@
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    <button class="lb-arrow lb-arrow-prev" id="lb-prev" onclick="lbPrev()">&#8592;</button>
+    <div class="lb-inner">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+      <div class="lb-footer">
+        <span class="lb-caption" id="lightbox-caption"></span>
+        <span class="lb-counter" id="lb-counter"></span>
+      </div>
+    </div>
+    <button class="lb-arrow lb-arrow-next" id="lb-next" onclick="lbNext()">&#8594;</button>
   </div>
 
   <script>
     // ── Scroll reveal ──
     const sections = document.querySelectorAll('section:not(#hero)');
-    const observer = new IntersectionObserver(entries => {
+    const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-    sections.forEach(s => observer.observe(s));
+    sections.forEach(s => revealObserver.observe(s));
 
     // ── Música ──
     let playing = false;
-    const YOUTUBE_ID = 'GRxofEmo3HA'; // Las Cuatro Estaciones - Vivaldi
+    const YOUTUBE_ID = 'GRxofEmo3HA';
 
     function toggleMusic() {
       const iframe = document.getElementById('vivaldi-audio');
       const waves = document.getElementById('waves');
       const btn = document.querySelector('.music-btn');
-
       if (!playing) {
         iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&controls=0&loop=1&playlist=${YOUTUBE_ID}`;
         waves.classList.remove('paused');
@@ -956,27 +985,159 @@
       playing = !playing;
     }
 
-    // ── Lightbox ──
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        if (img) {
-          document.getElementById('lightbox-img').src = img.src;
-          document.getElementById('lightbox').classList.add('open');
+    // ── GALERÍA: configuración ──
+    // ⚠️ PERSONALIZA AQUÍ: lista con los nombres reales de tus archivos en /images/
+    // Si tus imágenes se llaman de otra forma, cambia los nombres aquí.
+    // Ejemplo: 'paisaje-tajo.jpg', 'retrato-2019.jpg', etc.
+    const TOTAL_IMAGES = 82;
+    const IMAGE_FOLDER = 'images/'; // carpeta dentro del repo
+
+    // Genera la lista de imágenes. Cambia esta función si tus nombres son distintos.
+    function buildImageList() {
+      const list = [];
+      for (let i = 1; i <= TOTAL_IMAGES; i++) {
+        list.push({
+          src: `${IMAGE_FOLDER}cuadro${i}.jpg`,
+          title: `Cuadro nº ${i}` // sustituir por títulos reales si los hay
+        });
+      }
+      return list;
+    }
+
+    const allImages = buildImageList();
+    let currentIndex = 0;       // cuántas imágenes se han renderizado ya
+    const BATCH = 12;           // cuántas cargar por tanda
+    let isLoading = false;
+    let allLoaded = false;
+
+    // ── Renderizar una tanda de imágenes ──
+    function loadBatch() {
+      if (isLoading || allLoaded) return;
+      isLoading = true;
+      document.getElementById('spinner').classList.add('active');
+
+      const grid = document.getElementById('masonry-grid');
+      const batch = allImages.slice(currentIndex, currentIndex + BATCH);
+
+      // Pequeño delay para dar sensación de carga suave
+      setTimeout(() => {
+        batch.forEach((imgData, batchIdx) => {
+          const globalIdx = currentIndex + batchIdx;
+
+          const item = document.createElement('div');
+          item.className = 'masonry-item';
+          item.dataset.index = globalIdx;
+
+          // Skeleton con altura proporcional aleatoria para simular masonry
+          const skeletonH = 150 + Math.floor(Math.random() * 180);
+          const skeleton = document.createElement('div');
+          skeleton.className = 'skeleton';
+          skeleton.style.height = skeletonH + 'px';
+          item.appendChild(skeleton);
+
+          const overlay = document.createElement('div');
+          overlay.className = 'masonry-overlay';
+          const caption = document.createElement('span');
+          caption.className = 'masonry-caption';
+          caption.textContent = `«${imgData.title}»`;
+          overlay.appendChild(caption);
+          item.appendChild(overlay);
+
+          // Lazy load con IntersectionObserver
+          const img = document.createElement('img');
+          img.alt = imgData.title;
+          img.dataset.src = imgData.src;
+
+          const imgObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                img.src = img.dataset.src;
+                img.onload = () => {
+                  img.classList.add('loaded');
+                  skeleton.remove();
+                };
+                img.onerror = () => {
+                  // Si la imagen no existe, mostrar placeholder de color
+                  skeleton.style.height = (150 + Math.floor(Math.random() * 180)) + 'px';
+                  skeleton.style.animation = 'none';
+                  skeleton.style.background = `hsl(${30 + Math.random()*40}, ${30 + Math.random()*20}%, ${60 + Math.random()*15}%)`;
+                };
+                imgObserver.disconnect();
+              }
+            });
+          }, { rootMargin: '200px' });
+
+          item.insertBefore(img, overlay);
+          imgObserver.observe(img);
+
+          // Click → lightbox
+          item.addEventListener('click', () => openLightbox(globalIdx));
+
+          grid.appendChild(item);
+        });
+
+        currentIndex += batch.length;
+        isLoading = false;
+        document.getElementById('spinner').classList.remove('active');
+
+        if (currentIndex >= allImages.length) {
+          allLoaded = true;
+          document.getElementById('gallery-end').classList.add('visible');
+          sentinelObserver.disconnect();
         }
-      });
-    });
+      }, 400);
+    }
+
+    // ── Infinite scroll con sentinel ──
+    const sentinel = document.getElementById('gallery-sentinel');
+    const sentinelObserver = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) loadBatch();
+    }, { rootMargin: '300px' });
+    sentinelObserver.observe(sentinel);
+
+    // Carga inicial
+    loadBatch();
+
+    // ── LIGHTBOX con navegación ──
+    let lightboxIndex = 0;
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
     }
+
+    function updateLightbox() {
+      const imgData = allImages[lightboxIndex];
+      const lb = document.getElementById('lightbox-img');
+      lb.style.opacity = 0;
+      lb.src = imgData.src;
+      lb.alt = imgData.title;
+      lb.onload = () => { lb.style.transition = 'opacity 0.3s'; lb.style.opacity = 1; };
+      document.getElementById('lightbox-caption').textContent = `«${imgData.title}»`;
+      document.getElementById('lb-counter').textContent = `${lightboxIndex + 1} / ${allImages.length}`;
+      document.getElementById('lb-prev').style.opacity = lightboxIndex === 0 ? '0.3' : '1';
+      document.getElementById('lb-next').style.opacity = lightboxIndex === allImages.length - 1 ? '0.3' : '1';
+    }
+
+    function lbPrev() { if (lightboxIndex > 0) { lightboxIndex--; updateLightbox(); } }
+    function lbNext() { if (lightboxIndex < allImages.length - 1) { lightboxIndex++; updateLightbox(); } }
 
     document.getElementById('lightbox').addEventListener('click', e => {
       if (e.target === e.currentTarget) closeLightbox();
     });
 
     document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbPrev();
+      if (e.key === 'ArrowRight') lbNext();
     });
   </script>
 
