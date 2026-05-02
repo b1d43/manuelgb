@@ -733,15 +733,139 @@
     }
 
     /* ─── RESPONSIVE ─── */
+    /* ─── ESTUDIO ─── */
+    #estudio {
+      background: var(--brown-dark);
+      overflow: hidden;
+    }
+
+    #estudio .section-label { color: var(--gold-light); }
+    #estudio .section-title { color: var(--cream); }
+    #estudio .ornament { color: var(--gold-light); }
+
+    .studio-intro {
+      max-width: 560px;
+      color: rgba(245, 240, 232, 0.55);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 3.5rem;
+      font-style: italic;
+    }
+
+    /* Foto 1: placa entrada — grande, centrada, con efecto revelación */
+    .studio-hero {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      overflow: hidden;
+    }
+
+    .studio-hero img {
+      width: 100%;
+      display: block;
+      filter: sepia(15%) contrast(1.05);
+      transition: transform 0.8s ease;
+    }
+
+    .studio-hero:hover img { transform: scale(1.03); }
+
+    .studio-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44,30,15,0.7) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .studio-hero-text {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      font-size: 1.1rem;
+      font-style: italic;
+      opacity: 0.85;
+    }
+
+    /* Fotos 2 y 3: lado a lado */
+    .studio-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .studio-pair-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .studio-pair-item img {
+      width: 100%;
+      display: block;
+      filter: sepia(10%) contrast(1.04);
+      transition: transform 0.7s ease;
+    }
+
+    .studio-pair-item:hover img { transform: scale(1.04); }
+
+    .studio-pair-item .studio-hero-overlay {
+      background: linear-gradient(to top, rgba(20,12,4,0.65) 0%, transparent 55%);
+    }
+
+    /* ─── PRENSA MASONRY ─── */
+    .press-masonry {
+      columns: 4;
+      column-gap: 12px;
+    }
+
+    .press-masonry-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--cream);
+      border: 1px solid rgba(184, 151, 58, 0.15);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .press-masonry-item:hover {
+      box-shadow: 0 8px 30px var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .press-masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: sepia(18%) contrast(0.95);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .press-masonry-item img.loaded { opacity: 1; }
+
+    .press-masonry-item .skeleton {
+      width: 100%;
+      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @media (max-width: 900px) {
+      .press-masonry { columns: 3; }
+      .studio-pair { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .press-masonry { columns: 2; }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 0.8rem 1.5rem; }
       nav ul { gap: 1.2rem; }
-      .bio-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
-      .gallery-item { grid-column: auto !important; grid-row: auto !important; }
-      .press-grid { grid-template-columns: 1fr; }
       .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .bio-facts { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -768,7 +892,7 @@
   <nav>
     <div class="nav-brand">Manuel García Benítez</div>
     <ul>
-      <li><a href="#biografia">Biografía</a></li>
+      <li><a href="#estudio">El Estudio</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#prensa">Prensa</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -783,57 +907,39 @@
       <h1 class="hero-name">Manuel<br><em>García Benítez</em></h1>
       <p class="hero-subtitle">Pintor impresionista · Desde 1955</p>
       <div class="hero-line"></div>
-      <a href="#biografia" class="btn-scroll">Conocer al artista</a>
+      <a href="#estudio" class="btn-scroll">Entrar al estudio</a>
     </div>
   </section>
 
-  <!-- BIOGRAFÍA -->
-  <section id="biografia">
+  <!-- EL ESTUDIO -->
+  <section id="estudio">
     <div class="container">
-      <p class="section-label">El artista</p>
-      <h2 class="section-title">Una vida <em>dedicada al color</em></h2>
-      <div class="bio-layout">
+      <p class="section-label">Aranjuez · Madrid</p>
+      <h2 class="section-title">El <em>Estudio</em></h2>
+      <p class="studio-intro">
+        Un espacio donde la luz y el color cobran vida. Bienvenido al estudio de García Benítez.
+      </p>
 
-        <div class="bio-photo-wrap">
-          <div class="bio-photo-frame"></div>
-          <!-- Sustituir por: <img class="bio-photo" src="foto-manuel.jpg" alt="Manuel García Benítez"> -->
-          <div class="bio-photo-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            <span>Fotografía del artista</span>
-          </div>
-          <p class="bio-photo-caption">Manuel García Benítez, Aranjuez</p>
+      <!-- Foto 1: placa de la entrada -->
+      <div class="studio-hero">
+        <img src="images/estudio1.jpg" alt="Entrada al Estudio de Arte García Benítez" />
+        <div class="studio-hero-overlay">
+          <span class="studio-hero-text">G.ª Benítez · Estudio de Arte · Aranjuez</span>
         </div>
+      </div>
 
-        <div class="bio-text">
-          <p>
-            Nacido en 1955, Manuel García Benítez ha consagrado su vida al estudio de la luz y el color a través de la pintura impresionista. Criado entre los jardines del Real Sitio de Aranjuez, la naturaleza exuberante de este lugar marcó profundamente su sensibilidad artística desde la infancia.
-          </p>
-          <p>
-            Formado en la tradición clásica europea, su obra bebe de los grandes maestros del impresionismo francés — Monet, Pissarro, Sisley — sin renunciar a la identidad paisajística castellana. Sus cuadros capturan la quietud del Tajo, la luz dorada de los jardines reales y la vida cotidiana de su entorno con una paleta vibrante y una pincelada libre.
-          </p>
-          <p>
-            A lo largo de su trayectoria ha expuesto en numerosas galerías y ha recibido el reconocimiento de la crítica especializada. Su obra forma parte de colecciones privadas en España y el extranjero.
-          </p>
-
-          <div class="bio-facts">
-            <div>
-              <p class="bio-fact-label">Nacimiento</p>
-              <p class="bio-fact-value">1955, España</p>
-            </div>
-            <div>
-              <p class="bio-fact-label">Residencia</p>
-              <p class="bio-fact-value">Aranjuez, Madrid</p>
-            </div>
-            <div>
-              <p class="bio-fact-label">Estilo</p>
-              <p class="bio-fact-value">Impresionismo</p>
-            </div>
-            <div>
-              <p class="bio-fact-label">Técnica</p>
-              <p class="bio-fact-value">Óleo sobre lienzo</p>
-            </div>
+      <!-- Fotos 2 y 3: fachada e interior -->
+      <div class="studio-pair">
+        <div class="studio-pair-item">
+          <img src="images/estudio2.jpg" alt="Fachada del estudio" />
+          <div class="studio-hero-overlay">
+            <span class="studio-hero-text">La entrada</span>
+          </div>
+        </div>
+        <div class="studio-pair-item">
+          <img src="images/estudio3.jpg" alt="Interior del estudio con cuadros" />
+          <div class="studio-hero-overlay">
+            <span class="studio-hero-text">El interior</span>
           </div>
         </div>
       </div>
@@ -863,46 +969,11 @@
       <h2 class="section-title">En la <em>prensa</em></h2>
       <div class="ornament">✦ · ✦</div>
 
-      <div class="press-grid">
+      <div class="press-masonry" id="press-masonry"></div>
 
-        <!-- Sustituir .press-clipping-placeholder por <img class="press-clipping" src="recorte1.jpg"> -->
-
-        <div class="press-card">
-          <div class="press-clipping-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
-          </div>
-          <div class="press-info">
-            <p class="press-source">ABC Cultural</p>
-            <p class="press-headline">«El pintor que captura el alma de Aranjuez»</p>
-            <p class="press-date">Marzo 2022</p>
-          </div>
-        </div>
-
-        <div class="press-card">
-          <div class="press-clipping-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
-          </div>
-          <div class="press-info">
-            <p class="press-source">El País</p>
-            <p class="press-headline">«García Benítez y la luz del Tajo»</p>
-            <p class="press-date">Octubre 2020</p>
-          </div>
-        </div>
-
-        <div class="press-card">
-          <div class="press-clipping-placeholder">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
-            <span style="font-size:0.75rem; letter-spacing:0.1em;">Recorte de prensa</span>
-          </div>
-          <div class="press-info">
-            <p class="press-source">Revista Arte Español</p>
-            <p class="press-headline">«El impresionismo vivo en la Comunidad de Madrid»</p>
-            <p class="press-date">Enero 2019</p>
-          </div>
-        </div>
-
+      <div id="press-sentinel" style="height:60px; display:flex; align-items:center; justify-content:center; margin-top:1rem;">
+        <div class="loading-spinner" id="press-spinner"></div>
+        <p class="gallery-end-msg" id="press-end">✦ &nbsp; Fin de los recortes &nbsp; ✦</p>
       </div>
     </div>
   </section>
@@ -959,150 +1030,153 @@
 
   <script>
     // ── Scroll reveal ──
-    const sections = document.querySelectorAll('section:not(#hero)');
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    sections.forEach(s => revealObserver.observe(s));
+    document.querySelectorAll('section:not(#hero)').forEach(s => {
+      new IntersectionObserver(([e]) => { if (e.isIntersecting) s.classList.add('visible'); }, { threshold: 0.1 }).observe(s);
+    });
 
     // ── Música ──
     let playing = false;
     const YOUTUBE_ID = 'GRxofEmo3HA';
-
     function toggleMusic() {
       const iframe = document.getElementById('vivaldi-audio');
       const waves = document.getElementById('waves');
       const btn = document.querySelector('.music-btn');
       if (!playing) {
         iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&controls=0&loop=1&playlist=${YOUTUBE_ID}`;
-        waves.classList.remove('paused');
-        btn.textContent = '⏸';
+        waves.classList.remove('paused'); btn.textContent = '⏸';
       } else {
-        iframe.src = '';
-        waves.classList.add('paused');
-        btn.textContent = '▶';
+        iframe.src = ''; waves.classList.add('paused'); btn.textContent = '▶';
       }
       playing = !playing;
     }
 
-    // ── GALERÍA: configuración ──
-    // ⚠️ PERSONALIZA AQUÍ: lista con los nombres reales de tus archivos en /images/
-    // Si tus imágenes se llaman de otra forma, cambia los nombres aquí.
-    // Ejemplo: 'paisaje-tajo.jpg', 'retrato-2019.jpg', etc.
-    const TOTAL_IMAGES = 82;
-    const IMAGE_FOLDER = 'images/'; // carpeta dentro del repo
+    // ════════════════════════════════════
+    // ── UTILIDAD: crear item masonry ──
+    // ════════════════════════════════════
+    function makeMasonryItem(data, globalIdx, cssClass, onClickFn) {
+      const item = document.createElement('div');
+      item.className = cssClass;
 
-    // Genera la lista de imágenes. Cambia esta función si tus nombres son distintos.
-    function buildImageList() {
-      const list = [];
-      for (let i = 1; i <= TOTAL_IMAGES; i++) {
-        list.push({
-          src: `${IMAGE_FOLDER}cuadro${i}.jpg`,
-          title: `Cuadro nº ${i}` // sustituir por títulos reales si los hay
-        });
-      }
-      return list;
+      const skH = 160 + Math.floor(Math.random() * 160);
+      const sk = document.createElement('div');
+      sk.className = 'skeleton';
+      sk.style.height = skH + 'px';
+      item.appendChild(sk);
+
+      const img = document.createElement('img');
+      img.alt = data.title;
+      img.dataset.src = data.src;
+
+      new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        img.src = img.dataset.src;
+        img.onload = () => { img.classList.add('loaded'); sk.remove(); };
+        img.onerror = () => { sk.style.animation = 'none'; sk.style.background = '#ccc8b8'; };
+        e.target._io && e.target._io.disconnect();
+      }, { rootMargin: '200px' }).observe(img);
+
+      item.appendChild(img);
+      item.addEventListener('click', () => onClickFn(globalIdx));
+      return item;
     }
 
-    const allImages = buildImageList();
-    let currentIndex = 0;       // cuántas imágenes se han renderizado ya
-    const BATCH = 12;           // cuántas cargar por tanda
-    let isLoading = false;
-    let allLoaded = false;
+    // ════════════════════════════════════
+    // ── GALERÍA DE CUADROS ──
+    // ════════════════════════════════════
+    // ⚠️ Ajusta TOTAL_PAINTINGS y PAINTINGS_FOLDER si es necesario
+    const TOTAL_PAINTINGS = 82;
+    const PAINTINGS_FOLDER = 'images/';
 
-    // ── Renderizar una tanda de imágenes ──
-    function loadBatch() {
-      if (isLoading || allLoaded) return;
-      isLoading = true;
+    const allPaintings = Array.from({ length: TOTAL_PAINTINGS }, (_, i) => ({
+      src: `${PAINTINGS_FOLDER}cuadro-${i + 1}.jpg`,
+      title: `Cuadro nº ${i + 1}`
+    }));
+
+    let paintIdx = 0, paintLoading = false, paintDone = false;
+
+    function loadPaintingBatch() {
+      if (paintLoading || paintDone) return;
+      paintLoading = true;
       document.getElementById('spinner').classList.add('active');
-
       const grid = document.getElementById('masonry-grid');
-      const batch = allImages.slice(currentIndex, currentIndex + BATCH);
-
-      // Pequeño delay para dar sensación de carga suave
+      const batch = allPaintings.slice(paintIdx, paintIdx + 12);
       setTimeout(() => {
-        batch.forEach((imgData, batchIdx) => {
-          const globalIdx = currentIndex + batchIdx;
-
-          const item = document.createElement('div');
-          item.className = 'masonry-item';
-          item.dataset.index = globalIdx;
-
-          // Skeleton con altura proporcional aleatoria para simular masonry
-          const skeletonH = 150 + Math.floor(Math.random() * 180);
-          const skeleton = document.createElement('div');
-          skeleton.className = 'skeleton';
-          skeleton.style.height = skeletonH + 'px';
-          item.appendChild(skeleton);
-
+        batch.forEach((data, i) => {
+          const item = makeMasonryItem(data, paintIdx + i, 'masonry-item', idx => openLightbox('painting', idx));
+          // Añadir overlay con caption para cuadros
           const overlay = document.createElement('div');
           overlay.className = 'masonry-overlay';
-          const caption = document.createElement('span');
-          caption.className = 'masonry-caption';
-          caption.textContent = `«${imgData.title}»`;
-          overlay.appendChild(caption);
+          const cap = document.createElement('span');
+          cap.className = 'masonry-caption';
+          cap.textContent = `«${data.title}»`;
+          overlay.appendChild(cap);
           item.appendChild(overlay);
-
-          // Lazy load con IntersectionObserver
-          const img = document.createElement('img');
-          img.alt = imgData.title;
-          img.dataset.src = imgData.src;
-
-          const imgObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                img.src = img.dataset.src;
-                img.onload = () => {
-                  img.classList.add('loaded');
-                  skeleton.remove();
-                };
-                img.onerror = () => {
-                  // Si la imagen no existe, mostrar placeholder de color
-                  skeleton.style.height = (150 + Math.floor(Math.random() * 180)) + 'px';
-                  skeleton.style.animation = 'none';
-                  skeleton.style.background = `hsl(${30 + Math.random()*40}, ${30 + Math.random()*20}%, ${60 + Math.random()*15}%)`;
-                };
-                imgObserver.disconnect();
-              }
-            });
-          }, { rootMargin: '200px' });
-
-          item.insertBefore(img, overlay);
-          imgObserver.observe(img);
-
-          // Click → lightbox
-          item.addEventListener('click', () => openLightbox(globalIdx));
-
           grid.appendChild(item);
         });
-
-        currentIndex += batch.length;
-        isLoading = false;
+        paintIdx += batch.length;
+        paintLoading = false;
         document.getElementById('spinner').classList.remove('active');
-
-        if (currentIndex >= allImages.length) {
-          allLoaded = true;
+        if (paintIdx >= allPaintings.length) {
+          paintDone = true;
           document.getElementById('gallery-end').classList.add('visible');
-          sentinelObserver.disconnect();
+          paintIO.disconnect();
         }
-      }, 400);
+      }, 380);
     }
 
-    // ── Infinite scroll con sentinel ──
-    const sentinel = document.getElementById('gallery-sentinel');
-    const sentinelObserver = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) loadBatch();
-    }, { rootMargin: '300px' });
-    sentinelObserver.observe(sentinel);
+    const paintIO = new IntersectionObserver(([e]) => { if (e.isIntersecting) loadPaintingBatch(); }, { rootMargin: '300px' });
+    paintIO.observe(document.getElementById('gallery-sentinel'));
+    loadPaintingBatch();
 
-    // Carga inicial
-    loadBatch();
+    // ════════════════════════════════════
+    // ── GALERÍA DE PRENSA ──
+    // ════════════════════════════════════
+    // ⚠️ Ajusta TOTAL_PRESS y PRESS_FOLDER según tu estructura de carpetas
+    const TOTAL_PRESS = 116;
+    const PRESS_FOLDER = 'images/prensa/';
 
-    // ── LIGHTBOX con navegación ──
-    let lightboxIndex = 0;
+    const allPress = Array.from({ length: TOTAL_PRESS }, (_, i) => ({
+      src: `${PRESS_FOLDER}recorte-${i + 1}.jpg`,
+      title: `Recorte nº ${i + 1}`
+    }));
 
-    function openLightbox(index) {
-      lightboxIndex = index;
+    let pressIdx = 0, pressLoading = false, pressDone = false;
+
+    function loadPressBatch() {
+      if (pressLoading || pressDone) return;
+      pressLoading = true;
+      document.getElementById('press-spinner').classList.add('active');
+      const grid = document.getElementById('press-masonry');
+      const batch = allPress.slice(pressIdx, pressIdx + 16);
+      setTimeout(() => {
+        batch.forEach((data, i) => {
+          const item = makeMasonryItem(data, pressIdx + i, 'press-masonry-item', idx => openLightbox('press', idx));
+          grid.appendChild(item);
+        });
+        pressIdx += batch.length;
+        pressLoading = false;
+        document.getElementById('press-spinner').classList.remove('active');
+        if (pressIdx >= allPress.length) {
+          pressDone = true;
+          document.getElementById('press-end').classList.add('visible');
+          pressIO.disconnect();
+        }
+      }, 350);
+    }
+
+    const pressIO = new IntersectionObserver(([e]) => { if (e.isIntersecting) loadPressBatch(); }, { rootMargin: '300px' });
+    pressIO.observe(document.getElementById('press-sentinel'));
+
+    // ════════════════════════════════════
+    // ── LIGHTBOX UNIFICADO ──
+    // ════════════════════════════════════
+    let lbMode = 'painting';
+    let lbIndex = 0;
+
+    function currentList() { return lbMode === 'painting' ? allPaintings : allPress; }
+
+    function openLightbox(mode, index) {
+      lbMode = mode; lbIndex = index;
       updateLightbox();
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1114,24 +1188,22 @@
     }
 
     function updateLightbox() {
-      const imgData = allImages[lightboxIndex];
+      const list = currentList();
+      const data = list[lbIndex];
       const lb = document.getElementById('lightbox-img');
       lb.style.opacity = 0;
-      lb.src = imgData.src;
-      lb.alt = imgData.title;
+      lb.src = data.src; lb.alt = data.title;
       lb.onload = () => { lb.style.transition = 'opacity 0.3s'; lb.style.opacity = 1; };
-      document.getElementById('lightbox-caption').textContent = `«${imgData.title}»`;
-      document.getElementById('lb-counter').textContent = `${lightboxIndex + 1} / ${allImages.length}`;
-      document.getElementById('lb-prev').style.opacity = lightboxIndex === 0 ? '0.3' : '1';
-      document.getElementById('lb-next').style.opacity = lightboxIndex === allImages.length - 1 ? '0.3' : '1';
+      document.getElementById('lightbox-caption').textContent = `«${data.title}»`;
+      document.getElementById('lb-counter').textContent = `${lbIndex + 1} / ${list.length}`;
+      document.getElementById('lb-prev').style.opacity = lbIndex === 0 ? '0.3' : '1';
+      document.getElementById('lb-next').style.opacity = lbIndex === list.length - 1 ? '0.3' : '1';
     }
 
-    function lbPrev() { if (lightboxIndex > 0) { lightboxIndex--; updateLightbox(); } }
-    function lbNext() { if (lightboxIndex < allImages.length - 1) { lightboxIndex++; updateLightbox(); } }
+    function lbPrev() { if (lbIndex > 0) { lbIndex--; updateLightbox(); } }
+    function lbNext() { if (lbIndex < currentList().length - 1) { lbIndex++; updateLightbox(); } }
 
-    document.getElementById('lightbox').addEventListener('click', e => {
-      if (e.target === e.currentTarget) closeLightbox();
-    });
+    document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
 
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
