@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -247,12 +246,7 @@
 
     section {
       padding: 7rem 0;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
     }
-
-    section.visible { opacity: 1; transform: translateY(0); }
 
     .container {
       max-width: 1100px;
@@ -310,14 +304,8 @@
       margin-right: auto;
     }
 
-    .studio-photo-fachada {
-      width: 100%;
-    }
-
-    .studio-photo-interior {
-      width: 100%;
-      margin-bottom: 0;
-    }
+    .studio-photo-fachada { width: 100%; }
+    .studio-photo-interior { width: 100%; margin-bottom: 0; }
 
     .studio-photo img {
       width: 100%;
@@ -346,9 +334,7 @@
       letter-spacing: 0.05em;
     }
 
-    .studio-fullwidth {
-      margin-top: 1rem;
-    }
+    .studio-fullwidth { margin-top: 1rem; }
 
     /* ─── GALERÍA ─── */
     #galeria { background: var(--cream); }
@@ -374,10 +360,7 @@
       display: block;
       transition: transform 0.5s ease, filter 0.4s ease;
       filter: sepia(6%);
-      opacity: 0;
     }
-
-    .masonry-item img.loaded { opacity: 1; }
 
     .masonry-item:hover img { transform: scale(1.04); filter: sepia(0%); }
 
@@ -405,7 +388,7 @@
 
     .masonry-item:hover .masonry-caption { opacity: 1; transform: translateY(0); }
 
-    .masonry-item .skeleton {
+    .skeleton {
       width: 100%;
       background: linear-gradient(90deg, #e8dcc8 25%, #f0e8d5 50%, #e8dcc8 75%);
       background-size: 200% 100%;
@@ -449,9 +432,6 @@
 
     .gallery-end-msg.visible { display: block; }
 
-    @media (max-width: 900px) { .masonry-grid { columns: 3; } }
-    @media (max-width: 600px) { .masonry-grid { columns: 2; } }
-
     /* ─── PRENSA TIMELINE ─── */
     #prensa {
       background: var(--parchment);
@@ -464,8 +444,6 @@
       flex-direction: column;
       gap: 2.5rem;
     }
-
-    .press-year-block {}
 
     .press-year-label {
       font-family: 'Cormorant Garamond', serif;
@@ -507,18 +485,6 @@
       height: auto;
       display: block;
       filter: sepia(15%) contrast(0.95);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .press-single img.loaded { opacity: 1; }
-
-    .press-single .skeleton {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
     }
 
     .press-group {
@@ -562,18 +528,6 @@
       height: auto;
       display: block;
       filter: sepia(15%) contrast(0.95);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .press-group-page img.loaded { opacity: 1; }
-
-    .press-group-page .skeleton {
-      width: 100%;
-      height: 160px;
-      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
     }
 
     .press-group[data-pages="2"] {
@@ -710,7 +664,6 @@
       letter-spacing: 0.12em;
     }
 
-    /* ─── FOOTER ─── */
     footer {
       background: #160e05;
       text-align: center;
@@ -728,18 +681,10 @@
     }
 
     @media (max-width: 900px) {
-      .press-single {
-        width: calc(33% - 0.75rem);
-        min-width: 140px;
-      }
-      .press-group[data-pages="2"] {
-        width: calc(50% - 0.75rem);
-        min-width: 220px;
-      }
-      .press-group[data-pages="3"] {
-        width: calc(66% - 0.75rem);
-        min-width: 280px;
-      }
+      .masonry-grid { columns: 3; }
+      .press-single { width: calc(33% - 0.75rem); min-width: 140px; }
+      .press-group[data-pages="2"] { width: calc(50% - 0.75rem); min-width: 220px; }
+      .press-group[data-pages="3"] { width: calc(66% - 0.75rem); min-width: 280px; }
     }
 
     @media (max-width: 768px) {
@@ -749,26 +694,15 @@
 
     @media (max-width: 600px) {
       .masonry-grid { columns: 2; }
-      .press-single {
-        width: calc(50% - 0.5rem);
-        min-width: 120px;
-      }
+      .press-single { width: calc(50% - 0.5rem); min-width: 120px; }
       .press-group[data-pages="2"],
-      .press-group[data-pages="3"] {
-        width: 100%;
-        min-width: 0;
-      }
+      .press-group[data-pages="3"] { width: 100%; min-width: 0; }
     }
   </style>
 </head>
 <body>
 
-  <iframe id="vivaldi-audio"
-    src=""
-    style="display:none;"
-    allow="autoplay"
-    title="Música de fondo">
-  </iframe>
+  <iframe id="vivaldi-audio" src="" style="display:none;" allow="autoplay" title="Música de fondo"></iframe>
 
   <div class="music-bar" onclick="toggleMusic()">
     <button class="music-btn" aria-label="Reproducir / Pausar">▶</button>
@@ -788,7 +722,7 @@
     </ul>
   </nav>
 
-  <section id="hero" style="opacity:1; transform:none; padding:0;">
+  <section id="hero" style="padding:0;">
     <div class="hero-bg-text">Pintor</div>
     <div class="hero-content">
       <p class="hero-eyebrow">Aranjuez · Madrid · España</p>
@@ -803,28 +737,20 @@
     <div class="container">
       <p class="section-label">Aranjuez · Madrid</p>
       <h2 class="section-title">El <em>Estudio</em></h2>
-      <p class="studio-intro">
-        Un espacio donde la luz y el color cobran vida. Bienvenido al estudio de García Benítez.
-      </p>
+      <p class="studio-intro">Un espacio donde la luz y el color cobran vida. Bienvenido al estudio de García Benítez.</p>
       <div class="studio-photo studio-photo-placa">
         <img src="images/estudio1.jpg" alt="Placa del Estudio de Arte García Benítez" />
-        <div class="studio-overlay">
-          <span class="studio-overlay-text">G.ª Benítez · Estudio de Arte</span>
-        </div>
+        <div class="studio-overlay"><span class="studio-overlay-text">G.ª Benítez · Estudio de Arte</span></div>
       </div>
       <div class="studio-photo studio-photo-fachada">
         <img src="images/estudio2.jpg" alt="Fachada del estudio, calle Zerynthia 25, Aranjuez" />
-        <div class="studio-overlay">
-          <span class="studio-overlay-text">Zerynthia 25 · Aranjuez</span>
-        </div>
+        <div class="studio-overlay"><span class="studio-overlay-text">Zerynthia 25 · Aranjuez</span></div>
       </div>
     </div>
     <div class="studio-fullwidth">
       <div class="studio-photo studio-photo-interior">
         <img src="images/estudio3.jpg" alt="Interior del estudio con obra expuesta" />
-        <div class="studio-overlay">
-          <span class="studio-overlay-text">El interior · Obra expuesta</span>
-        </div>
+        <div class="studio-overlay"><span class="studio-overlay-text">El interior · Obra expuesta</span></div>
       </div>
     </div>
   </section>
@@ -883,13 +809,6 @@
   </div>
 
   <script>
-    // ── Scroll reveal ──
-    document.querySelectorAll('section:not(#hero)').forEach(s => {
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting) s.classList.add('visible');
-      }, { threshold: 0.1 }).observe(s);
-    });
-
     // ── Música ──
     let playing = false;
     const YOUTUBE_ID = 'GRxofEmo3HA';
@@ -907,24 +826,6 @@
         btn.textContent = '▶';
       }
       playing = !playing;
-    }
-
-    // ── Lazy load de imagen ──
-    function lazyLoadImg(img, skeleton) {
-      new IntersectionObserver(([e]) => {
-        if (!e.isIntersecting) return;
-        img.src = img.dataset.src;
-        img.onload = () => {
-          img.classList.add('loaded');
-          if (skeleton) skeleton.remove();
-        };
-        img.onerror = () => {
-          if (skeleton) {
-            skeleton.style.animation = 'none';
-            skeleton.style.background = '#ccc8b8';
-          }
-        };
-      }, { rootMargin: '300px' }).observe(img);
     }
 
     // ════════════════════════════════════
@@ -951,23 +852,15 @@
           const item = document.createElement('div');
           item.className = 'masonry-item';
 
-          const sk = document.createElement('div');
-          sk.className = 'skeleton';
-          sk.style.height = (160 + Math.floor(Math.random() * 160)) + 'px';
-          item.appendChild(sk);
-
           const img = document.createElement('img');
           img.alt = data.title;
-          img.dataset.src = data.src;
-          lazyLoadImg(img, sk);
+          img.src = data.src;
+          img.onerror = function() { this.style.display = 'none'; };
           item.appendChild(img);
 
           const overlay = document.createElement('div');
           overlay.className = 'masonry-overlay';
-          const cap = document.createElement('span');
-          cap.className = 'masonry-caption';
-          cap.textContent = `«${data.title}»`;
-          overlay.appendChild(cap);
+          overlay.innerHTML = `<span class="masonry-caption">«${data.title}»</span>`;
           item.appendChild(overlay);
 
           const idx = paintIdx + i;
@@ -981,228 +874,117 @@
           paintDone = true;
           document.getElementById('gallery-end').classList.add('visible');
         }
-      }, 380);
+      }, 100);
     }
 
-    const paintIO = new IntersectionObserver(([e]) => {
+    const sentinel = document.getElementById('gallery-sentinel');
+    const observer = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) loadPaintingBatch();
     }, { rootMargin: '300px' });
-    paintIO.observe(document.getElementById('gallery-sentinel'));
+    observer.observe(sentinel);
     loadPaintingBatch();
 
     // ════════════════════════════════════
-    // ── PRENSA: Timeline con grupos ──
+    // ── PRENSA ──
     // ════════════════════════════════════
     const pressData = [
-      {
-        year: '1977-1979',
-        note: 'Primeras reseñas',
-        items: [
-          { type: 'single', n: 1 },
-          { type: 'group', label: 'Revista Paradigma', pages: [2, 3] }
-        ]
-      },
-      {
-        year: '1980',
-        note: 'Primeras exposiciones',
-        items: [
-          { type: 'single', n: 4 }
-        ]
-      },
-      {
-        year: '1981',
-        note: 'Consolidación en Madrid',
-        items: [
-          { type: 'single', n: 5 },
-          { type: 'single', n: 6 },
-          { type: 'group', label: 'Reportaje generacional', pages: [7, 8] },
-          { type: 'single', n: 9 },
-          { type: 'single', n: 10 }
-        ]
-      },
-      {
-        year: '1982',
-        note: 'Expansión nacional',
-        items: [
-          { type: 'single', n: 11 }
-        ]
-      },
-      {
-        year: '1983',
-        note: 'Madrid',
-        items: [
-          { type: 'single', n: 13 },
-          { type: 'group', label: 'Hotel Los Galgos', pages: [12, 14] }
-        ]
-      },
-      {
-        year: '1984-1985',
-        note: 'Pintores Asociados',
-        items: [
-          { type: 'single', n: 15 },
-          { type: 'single', n: 16 },
-          { type: 'single', n: 17 },
-          { type: 'group', label: 'Libro del Grupo', pages: [18, 19] },
-          { type: 'single', n: 20 }
-        ]
-      },
-      {
-        year: '1986-1987',
-        note: 'Apuntes para un paisaje',
-        items: [
-          { type: 'group', label: 'Exposición Newland', pages: [21, 22, 23] },
-          { type: 'single', n: 24 }
-        ]
-      },
-      {
-        year: '1988',
-        note: 'Salamanca',
-        items: [
-          { type: 'group', label: 'Caja Rural Salamanca', pages: [25, 26] },
-          { type: 'single', n: 27 }
-        ]
-      },
-      {
-        year: '1989',
-        note: 'Finales de los 80',
-        items: [
-          { type: 'single', n: 28 },
-          { type: 'single', n: 62 },
-          { type: 'single', n: 29 },
-          { type: 'single', n: 30 }
-        ]
-      },
-      {
-        year: '1990-1992',
-        note: 'Nuevos grupos',
-        items: [
-          { type: 'single', n: 31 },
-          { type: 'single', n: 32 },
-          { type: 'single', n: 56 }
-        ]
-      },
-      {
-        year: '1993-1994',
-        note: 'Grupo Mixto de Arte',
-        items: [
-          { type: 'single', n: 33 },
-          { type: 'single', n: 43 },
-          { type: 'group', label: 'Sala Monticelli, Gijón', pages: [44, 45, 46] }
-        ]
-      },
-      {
-        year: '1995',
-        note: 'Año prolífico',
-        items: [
-          { type: 'single', n: 48 },
-          { type: 'single', n: 34 },
-          { type: 'single', n: 35 },
-          { type: 'single', n: 37 },
-          { type: 'single', n: 47 },
-          { type: 'single', n: 49 }
-        ]
-      },
-      {
-        year: '1996-1997',
-        note: 'EXPO-ARTE y Grupo Proarte',
-        items: [
-          { type: 'single', n: 53 },
-          { type: 'single', n: 54 },
-          { type: 'single', n: 55 },
-          { type: 'single', n: 64 },
-          { type: 'single', n: 63 }
-        ]
-      },
-      {
-        year: '1998',
-        note: 'Ferias internacionales',
-        items: [
-          { type: 'single', n: 66 },
-          { type: 'group', label: 'INTERART 98, Valencia', pages: [78, 79] }
-        ]
-      },
-      {
-        year: '1999',
-        note: 'Toledo, Sevilla, Palma',
-        items: [
-          { type: 'single', n: 89 },
-          { type: 'group', label: 'ARTESEVILLA 99', pages: [59, 60] },
-          { type: 'group', label: 'Caja Rural Toledo', pages: [86, 87, 88] },
-          { type: 'group', label: 'Hotel Palas Atenea, Palma', pages: [84, 85] }
-        ]
-      },
-      {
-        year: '2000',
-        note: 'Siglo XXI',
-        items: [
-          { type: 'group', label: 'ARTESEVILLA 2000', pages: [69, 70] },
-          { type: 'group', label: 'INTERART 2000, Valencia', pages: [80, 81] },
-          { type: 'group', label: 'Pintores Fin de Siglo, Palma', pages: [94, 95] }
-        ]
-      },
-      {
-        year: '2001',
-        note: 'Consagración internacional',
-        items: [
-          { type: 'single', n: 68 },
-          { type: 'group', label: 'ARTESEVILLA 2001', pages: [71, 72] },
-          { type: 'group', label: 'INTERART 2001, Valencia', pages: [82, 83, 97] },
-          { type: 'single', n: 96 }
-        ]
-      },
-      {
-        year: '2002',
-        note: 'Últimas ferias',
-        items: [
-          { type: 'group', label: 'ARTESEVILLA 2002', pages: [73, 74, 75] }
-        ]
-      },
-      {
-        year: '2003-2004',
-        note: 'Estudio propio en Aranjuez',
-        items: [
-          { type: 'single', n: 100 },
-          { type: 'single', n: 99 },
-          { type: 'single', n: 98 },
-          { type: 'group', label: 'Aranjuez, Variaciones', pages: [101, 102] }
-        ]
-      },
-      {
-        year: '2007-2008',
-        note: 'Gabinete Artístico',
-        items: [
-          { type: 'single', n: 104 },
-          { type: 'single', n: 108 },
-          { type: 'single', n: 105 },
-          { type: 'group', label: 'Feria de Artesanía Aranjuez', pages: [106, 107] },
-          { type: 'single', n: 110 }
-        ]
-      },
-      {
-        year: 's/f',
-        note: 'Documentación complementaria',
-        items: [
-          { type: 'single', n: 111 },
-          { type: 'single', n: 103 },
-          { type: 'single', n: 109 }
-        ]
-      }
+      { year: '1977-1979', note: 'Primeras reseñas', items: [
+        { type: 'single', n: 1 },
+        { type: 'group', label: 'Revista Paradigma', pages: [2, 3] }
+      ]},
+      { year: '1980', note: 'Primeras exposiciones', items: [
+        { type: 'single', n: 4 }
+      ]},
+      { year: '1981', note: 'Consolidación en Madrid', items: [
+        { type: 'single', n: 5 }, { type: 'single', n: 6 },
+        { type: 'group', label: 'Reportaje generacional', pages: [7, 8] },
+        { type: 'single', n: 9 }, { type: 'single', n: 10 }
+      ]},
+      { year: '1982', note: 'Expansión nacional', items: [
+        { type: 'single', n: 11 }
+      ]},
+      { year: '1983', note: 'Madrid', items: [
+        { type: 'single', n: 13 },
+        { type: 'group', label: 'Hotel Los Galgos', pages: [12, 14] }
+      ]},
+      { year: '1984-1985', note: 'Pintores Asociados', items: [
+        { type: 'single', n: 15 }, { type: 'single', n: 16 }, { type: 'single', n: 17 },
+        { type: 'group', label: 'Libro del Grupo', pages: [18, 19] },
+        { type: 'single', n: 20 }
+      ]},
+      { year: '1986-1987', note: 'Apuntes para un paisaje', items: [
+        { type: 'group', label: 'Exposición Newland', pages: [21, 22, 23] },
+        { type: 'single', n: 24 }
+      ]},
+      { year: '1988', note: 'Salamanca', items: [
+        { type: 'group', label: 'Caja Rural Salamanca', pages: [25, 26] },
+        { type: 'single', n: 27 }
+      ]},
+      { year: '1989', note: 'Finales de los 80', items: [
+        { type: 'single', n: 28 }, { type: 'single', n: 62 },
+        { type: 'single', n: 29 }, { type: 'single', n: 30 }
+      ]},
+      { year: '1990-1992', note: 'Nuevos grupos', items: [
+        { type: 'single', n: 31 }, { type: 'single', n: 32 }, { type: 'single', n: 56 }
+      ]},
+      { year: '1993-1994', note: 'Grupo Mixto de Arte', items: [
+        { type: 'single', n: 33 }, { type: 'single', n: 43 },
+        { type: 'group', label: 'Sala Monticelli, Gijón', pages: [44, 45, 46] }
+      ]},
+      { year: '1995', note: 'Año prolífico', items: [
+        { type: 'single', n: 48 }, { type: 'single', n: 34 }, { type: 'single', n: 35 },
+        { type: 'single', n: 37 }, { type: 'single', n: 47 }, { type: 'single', n: 49 }
+      ]},
+      { year: '1996-1997', note: 'EXPO-ARTE y Grupo Proarte', items: [
+        { type: 'single', n: 53 }, { type: 'single', n: 54 }, { type: 'single', n: 55 },
+        { type: 'single', n: 64 }, { type: 'single', n: 63 }
+      ]},
+      { year: '1998', note: 'Ferias internacionales', items: [
+        { type: 'single', n: 66 },
+        { type: 'group', label: 'INTERART 98, Valencia', pages: [78, 79] }
+      ]},
+      { year: '1999', note: 'Toledo, Sevilla, Palma', items: [
+        { type: 'single', n: 89 },
+        { type: 'group', label: 'ARTESEVILLA 99', pages: [59, 60] },
+        { type: 'group', label: 'Caja Rural Toledo', pages: [86, 87, 88] },
+        { type: 'group', label: 'Hotel Palas Atenea, Palma', pages: [84, 85] }
+      ]},
+      { year: '2000', note: 'Siglo XXI', items: [
+        { type: 'group', label: 'ARTESEVILLA 2000', pages: [69, 70] },
+        { type: 'group', label: 'INTERART 2000, Valencia', pages: [80, 81] },
+        { type: 'group', label: 'Pintores Fin de Siglo, Palma', pages: [94, 95] }
+      ]},
+      { year: '2001', note: 'Consagración internacional', items: [
+        { type: 'single', n: 68 },
+        { type: 'group', label: 'ARTESEVILLA 2001', pages: [71, 72] },
+        { type: 'group', label: 'INTERART 2001, Valencia', pages: [82, 83, 97] },
+        { type: 'single', n: 96 }
+      ]},
+      { year: '2002', note: 'Últimas ferias', items: [
+        { type: 'group', label: 'ARTESEVILLA 2002', pages: [73, 74, 75] }
+      ]},
+      { year: '2003-2004', note: 'Estudio propio en Aranjuez', items: [
+        { type: 'single', n: 100 }, { type: 'single', n: 99 }, { type: 'single', n: 98 },
+        { type: 'group', label: 'Aranjuez, Variaciones', pages: [101, 102] }
+      ]},
+      { year: '2007-2008', note: 'Gabinete Artístico', items: [
+        { type: 'single', n: 104 }, { type: 'single', n: 108 }, { type: 'single', n: 105 },
+        { type: 'group', label: 'Feria de Artesanía Aranjuez', pages: [106, 107] },
+        { type: 'single', n: 110 }
+      ]},
+      { year: 's/f', note: 'Documentación complementaria', items: [
+        { type: 'single', n: 111 }, { type: 'single', n: 103 }, { type: 'single', n: 109 }
+      ]}
     ];
 
     let pressImages = [];
-    pressData.forEach(yearBlock => {
-      yearBlock.items.forEach(item => {
+    pressData.forEach(yb => {
+      yb.items.forEach(item => {
         if (item.type === 'single') {
-          pressImages.push({
-            src: `images/prensa${item.n}.jpg`,
-            title: `Prensa ${item.n} · ${yearBlock.year}`
-          });
+          pressImages.push({ src: `images/prensa${item.n}.jpg`, title: `Prensa ${item.n} · ${yb.year}` });
         } else if (item.type === 'group') {
           item.pages.forEach(n => {
-            pressImages.push({
-              src: `images/prensa${n}.jpg`,
-              title: `${item.label} · ${yearBlock.year}`
-            });
+            pressImages.push({ src: `images/prensa${n}.jpg`, title: `${item.label} · ${yb.year}` });
           });
         }
       });
@@ -1212,76 +994,55 @@
       const timeline = document.getElementById('press-timeline');
       let globalIdx = 0;
 
-      pressData.forEach(yearBlock => {
+      pressData.forEach(yb => {
         const yearDiv = document.createElement('div');
         yearDiv.className = 'press-year-block';
 
         const yearLabel = document.createElement('div');
         yearLabel.className = 'press-year-label';
-        yearLabel.textContent = yearBlock.year + (yearBlock.note ? ` · ${yearBlock.note}` : '');
+        yearLabel.textContent = yb.year + (yb.note ? ` · ${yb.note}` : '');
         yearDiv.appendChild(yearLabel);
 
         const yearItems = document.createElement('div');
         yearItems.className = 'press-year-items';
 
-        yearBlock.items.forEach(item => {
+        yb.items.forEach(item => {
           if (item.type === 'single') {
             const el = document.createElement('div');
             el.className = 'press-single';
-
-            const sk = document.createElement('div');
-            sk.className = 'skeleton';
-            el.appendChild(sk);
-
             const img = document.createElement('img');
             img.alt = `Prensa ${item.n}`;
-            img.dataset.src = `images/prensa${item.n}.jpg`;
-            lazyLoadImg(img, sk);
+            img.src = `images/prensa${item.n}.jpg`;
+            img.onerror = function() { this.style.display = 'none'; };
             el.appendChild(img);
-
             const idx = globalIdx;
             el.addEventListener('click', () => openLightbox('press', idx));
             yearItems.appendChild(el);
             globalIdx++;
-
           } else if (item.type === 'group') {
             const grpWrap = document.createElement('div');
             grpWrap.className = 'press-group';
             grpWrap.setAttribute('data-pages', item.pages.length);
-
-            const grpLabel = document.createElement('div');
-            grpLabel.className = 'press-group-label';
-            grpLabel.textContent = item.label;
-            grpWrap.appendChild(grpLabel);
-
+            grpWrap.innerHTML = `<div class="press-group-label">${item.label}</div>`;
             const grpPages = document.createElement('div');
             grpPages.className = 'press-group-pages';
-
             item.pages.forEach(n => {
               const page = document.createElement('div');
               page.className = 'press-group-page';
-
-              const sk = document.createElement('div');
-              sk.className = 'skeleton';
-              page.appendChild(sk);
-
               const img = document.createElement('img');
               img.alt = item.label;
-              img.dataset.src = `images/prensa${n}.jpg`;
-              lazyLoadImg(img, sk);
+              img.src = `images/prensa${n}.jpg`;
+              img.onerror = function() { this.style.display = 'none'; };
               page.appendChild(img);
-
               const idx = globalIdx;
               page.addEventListener('click', () => openLightbox('press', idx));
               grpPages.appendChild(page);
               globalIdx++;
             });
-
             grpWrap.appendChild(grpPages);
             yearItems.appendChild(grpWrap);
           }
         });
-
         yearDiv.appendChild(yearItems);
         timeline.appendChild(yearDiv);
       });
@@ -1290,7 +1051,7 @@
     renderPressTimeline();
 
     // ════════════════════════════════════
-    // ── LIGHTBOX UNIFICADO ──
+    // ── LIGHTBOX ──
     // ════════════════════════════════════
     let lbMode = 'painting';
     let lbIndex = 0;
@@ -1315,32 +1076,19 @@
     function updateLightbox() {
       const list = currentList();
       const data = list[lbIndex];
-      const lb = document.getElementById('lightbox-img');
-      lb.style.opacity = 0;
-      lb.src = data.src;
-      lb.alt = data.title;
-      lb.onload = () => {
-        lb.style.transition = 'opacity 0.3s';
-        lb.style.opacity = 1;
-      };
-      document.getElementById('lightbox-caption').textContent = `«${data.title}»`;
+      document.getElementById('lightbox-img').src = data.src;
+      document.getElementById('lightbox-caption').textContent = data.title;
       document.getElementById('lb-counter').textContent = `${lbIndex + 1} / ${list.length}`;
       document.getElementById('lb-prev').style.opacity = lbIndex === 0 ? '0.3' : '1';
       document.getElementById('lb-next').style.opacity = lbIndex === list.length - 1 ? '0.3' : '1';
     }
 
-    function lbPrev() {
-      if (lbIndex > 0) { lbIndex--; updateLightbox(); }
-    }
-
-    function lbNext() {
-      if (lbIndex < currentList().length - 1) { lbIndex++; updateLightbox(); }
-    }
+    function lbPrev() { if (lbIndex > 0) { lbIndex--; updateLightbox(); } }
+    function lbNext() { if (lbIndex < currentList().length - 1) { lbIndex++; updateLightbox(); } }
 
     document.getElementById('lightbox').addEventListener('click', e => {
       if (e.target === e.currentTarget) closeLightbox();
     });
-
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -1348,6 +1096,5 @@
       if (e.key === 'ArrowRight') lbNext();
     });
   </script>
-
 </body>
 </html>
