@@ -651,82 +651,157 @@
     #contacto .section-label { color: var(--gold-light); }
     #contacto .section-title { color: var(--cream); }
 
-    .contact-visit {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: start;
-    }
+    .contact-simple { max-width: 480px; }
 
     .contact-text {
       color: rgba(245, 240, 232, 0.6);
       font-size: 1.05rem;
       line-height: 1.8;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      border: 1px solid rgba(184, 151, 58, 0.35);
+      padding: 1.2rem 2rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
 
-    .contact-item {
+    .contact-phone:hover {
+      border-color: var(--gold);
+      background: rgba(184, 151, 58, 0.08);
+    }
+
+    .contact-phone-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .contact-phone-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+    }
+
+    /* ─── PRENSA CRONOLÓGICA ─── */
+    .press-timeline { display: flex; flex-direction: column; gap: 3rem; }
+
+    .press-year-block {}
+
+    .press-year-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+    }
+
+    .press-year-items {
       display: flex;
+      flex-wrap: wrap;
       gap: 1.2rem;
       align-items: flex-start;
-      color: rgba(245, 240, 232, 0.65);
-      font-size: 0.95rem;
-      line-height: 1.5;
     }
 
-    .contact-item-link {
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-item-link:hover { color: var(--gold-light); }
-    .contact-item-link:hover .contact-item-icon { color: var(--gold-light); }
-
-    .contact-item-icon {
-      color: var(--gold);
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      margin-top: 0.1em;
-    }
-
-    .contact-map-hint {
-      display: block;
-      margin-top: 0.3rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      opacity: 0.7;
-    }
-
-    .contact-map-wrap {
+    /* Item individual */
+    .press-single {
+      cursor: pointer;
+      overflow: hidden;
+      flex: 0 0 auto;
+      width: calc(25% - 0.9rem);
+      border: 1px solid rgba(184, 151, 58, 0.12);
+      background: var(--cream);
+      transition: box-shadow 0.3s, transform 0.3s;
       position: relative;
     }
 
-    .contact-map-iframe {
+    .press-single:hover {
+      box-shadow: 0 6px 24px var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .press-single img {
       width: 100%;
-      height: 340px;
-      border: 1px solid rgba(184, 151, 58, 0.2);
+      height: auto;
       display: block;
-      filter: sepia(20%) contrast(0.9);
+      filter: sepia(15%) contrast(0.95);
+      opacity: 0;
+      transition: opacity 0.5s;
     }
 
-    .contact-map-fallback {
-      margin-top: 0.8rem;
-      text-align: right;
-      font-size: 0.8rem;
+    .press-single img.loaded { opacity: 1; }
+    .press-single .skeleton { width: 100%; background: linear-gradient(90deg,#d8d0c0 25%,#e8e0d0 50%,#d8d0c0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; }
+
+    /* Grupo díptico / tríptico */
+    .press-group {
+      flex: 0 0 auto;
+      border: 1px solid rgba(184, 151, 58, 0.3);
+      background: rgba(245, 240, 232, 0.04);
+      padding: 0.6rem;
+      position: relative;
     }
 
-    .contact-map-fallback a {
+    .press-group-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
       color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.08em;
       opacity: 0.7;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .press-group-pages {
+      display: flex;
+      gap: 3px;
+    }
+
+    .press-group-page {
+      cursor: pointer;
+      overflow: hidden;
+      flex: 1;
+      position: relative;
+      min-width: 0;
+      background: var(--cream);
       transition: opacity 0.2s;
     }
 
-    .contact-map-fallback a:hover { opacity: 1; }
+    .press-group-page:hover { opacity: 0.88; }
+
+    .press-group-page img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: sepia(15%) contrast(0.95);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .press-group-page img.loaded { opacity: 1; }
+    .press-group-page .skeleton { width: 100%; background: linear-gradient(90deg,#d8d0c0 25%,#e8e0d0 50%,#d8d0c0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; }
+
+    /* Ancho de grupo según número de páginas */
+    .press-group[data-pages="2"] { width: calc(33% - 0.8rem); }
+    .press-group[data-pages="3"] { width: calc(42% - 0.8rem); }
+
+    @media (max-width: 900px) {
+      .press-single { width: calc(33% - 0.8rem); }
+      .press-group[data-pages="2"] { width: calc(50% - 0.6rem); }
+      .press-group[data-pages="3"] { width: calc(66% - 0.6rem); }
+    }
+    @media (max-width: 600px) {
+      .press-single { width: calc(50% - 0.6rem); }
+      .press-group[data-pages="2"], .press-group[data-pages="3"] { width: 100%; }
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -995,64 +1070,21 @@
       <p class="section-label">Reconocimientos</p>
       <h2 class="section-title">En la <em>prensa</em></h2>
       <div class="ornament">✦ · ✦</div>
-
-      <div class="press-masonry" id="press-masonry"></div>
-
-      <div id="press-sentinel" style="height:60px; display:flex; align-items:center; justify-content:center; margin-top:1rem;">
-        <div class="loading-spinner" id="press-spinner"></div>
-        <p class="gallery-end-msg" id="press-end">✦ &nbsp; Fin de los recortes &nbsp; ✦</p>
-      </div>
+      <div class="press-timeline" id="press-timeline"></div>
     </div>
   </section>
 
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="container">
-      <p class="section-label">Cómo encontrarnos</p>
-      <h2 class="section-title" style="color:var(--cream);">Visitar el <em>Estudio</em></h2>
-
-      <div class="contact-visit">
-        <div class="contact-visit-info">
-          <p class="contact-text">
-            El estudio está abierto a quienes deseen conocer la obra de primera mano. No dude en llamar para concertar una visita.
-          </p>
-
-          <div class="contact-details">
-            <a class="contact-item contact-item-link"
-               href="https://www.google.com/maps/search/Zerynthia+25+Aranjuez+Madrid"
-               target="_blank" rel="noopener">
-              <span class="contact-item-icon">◎</span>
-              <span>
-                <strong style="display:block; color:var(--cream); margin-bottom:0.2rem;">Calle Zerynthia, 25</strong>
-                Aranjuez, Comunidad de Madrid
-                <span class="contact-map-hint">Ver en Google Maps →</span>
-              </span>
-            </a>
-
-            <a class="contact-item contact-item-link" href="tel:+34660532146">
-              <span class="contact-item-icon">✆</span>
-              <span>
-                <strong style="display:block; color:var(--cream); margin-bottom:0.2rem;">660 532 146</strong>
-                Llamar al estudio
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Mapa embebido -->
-        <div class="contact-map-wrap">
-          <iframe
-            class="contact-map-iframe"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY&q=Calle+Zerynthia+25,+Aranjuez,+Madrid"
-            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Ubicación del estudio">
-          </iframe>
-          <p class="contact-map-fallback">
-            <a href="https://www.google.com/maps/search/Zerynthia+25+Aranjuez+Madrid" target="_blank" rel="noopener">
-              Abrir en Google Maps →
-            </a>
-          </p>
-        </div>
+      <p class="section-label">Contacto</p>
+      <h2 class="section-title" style="color:var(--cream);">Llamar al <em>Estudio</em></h2>
+      <div class="contact-simple">
+        <p class="contact-text">Para consultas sobre obra o exposiciones, contacte directamente con el artista.</p>
+        <a class="contact-phone" href="tel:+34660532146">
+          <span class="contact-phone-icon">✆</span>
+          <span class="contact-phone-num">660 532 146</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1136,7 +1168,7 @@
     const PAINTINGS_FOLDER = 'images/';
 
     const allPaintings = Array.from({ length: TOTAL_PAINTINGS }, (_, i) => ({
-      src: `${PAINTINGS_FOLDER}cuadro${i + 1}.jpg`,
+      src: `${PAINTINGS_FOLDER}cuadro${i + 1}${i + 1 === 82 ? '.jpeg' : '.jpg'}`,
       title: `Cuadro nº ${i + 1}`
     }));
 
@@ -1177,43 +1209,239 @@
     loadPaintingBatch();
 
     // ════════════════════════════════════
-    // ── GALERÍA DE PRENSA ──
+    // ── PRENSA CRONOLÓGICA ──
     // ════════════════════════════════════
-    // ⚠️ Ajusta TOTAL_PRESS y PRESS_FOLDER según tu estructura de carpetas
-    const TOTAL_PRESS = 116;
-    const PRESS_FOLDER = 'images/';
+    // Estructura: cada entrada es un año con sus items.
+    // item puede ser: { single: N, label: 'Nombre' } o { group: [N,M,...], label: 'Nombre' }
+    const P = 'images/prensa'; // prefijo
+    const jpg = n => `${P}${n}.jpg`;
 
-    const allPress = Array.from({ length: TOTAL_PRESS }, (_, i) => ({
-      src: `${PRESS_FOLDER}prensa${i + 1}.jpg`,
-      title: `Recorte nº ${i + 1}`
-    }));
+    // Construye objeto imagen individual para el lightbox
+    const pressImages = []; // lista plana ordenada para el lightbox
 
-    let pressIdx = 0, pressLoading = false, pressDone = false;
+    const pressTimeline = [
+      { year: '1977–79', items: [
+        { single: 1, label: '' },
+        { group: [2, 3], label: 'Paradigma' },
+      ]},
+      { year: '1980', items: [
+        { single: 4, label: 'Club Escoriales' },
+      ]},
+      { year: '1981', items: [
+        { single: 5, label: 'Montgromo' },
+        { single: 6, label: '' },
+        { group: [7, 8], label: 'Reportaje' },
+        { single: 9, label: 'Crítica' },
+        { single: 10, label: 'Segovia' },
+      ]},
+      { year: '1982', items: [
+        { single: 11, label: 'Bilbao' },
+      ]},
+      { year: '1983', items: [
+        { single: 13, label: 'Génova' },
+        { group: [12, 14], label: 'Los Galgos' },
+      ]},
+      { year: '1984', items: [
+        { single: 15, label: 'Gran Versalles' },
+        { single: 16, label: '' },
+        { single: 17, label: 'Almería' },
+      ]},
+      { year: '1985', items: [
+        { group: [18, 19], label: 'Libro' },
+        { single: 20, label: 'Huelva' },
+      ]},
+      { year: '1986–87', items: [
+        { group: [21, 22, 23], label: 'Newland' },
+      ]},
+      { year: '1987', items: [
+        { single: 24, label: 'Almería' },
+      ]},
+      { year: '1988', items: [
+        { group: [25, 26], label: 'Salamanca' },
+        { single: 27, label: '' },
+      ]},
+      { year: '1989', items: [
+        { single: 28, label: 'Albacete' },
+        { single: 62, label: 'Arteguía' },
+        { single: 29, label: '' },
+        { single: 30, label: 'Bolsa Arte' },
+      ]},
+      { year: '1990', items: [
+        { single: 31, label: 'Funtana' },
+      ]},
+      { year: '1992', items: [
+        { single: 32, label: 'Almazán' },
+        { single: 56, label: 'Arteguía 92/93' },
+      ]},
+      { year: '1993', items: [
+        { single: 33, label: 'Griñón' },
+      ]},
+      { year: '1994', items: [
+        { single: 43, label: 'Castellón' },
+        { group: [44, 45, 46], label: 'Gijón' },
+      ]},
+      { year: '1995', items: [
+        { single: 48, label: '' },
+        { single: 34, label: 'Médicos' },
+        { single: 35, label: '' },
+        { single: 37, label: '' },
+        { single: 47, label: 'Palma' },
+        { single: 49, label: 'León' },
+      ]},
+      { year: '1996', items: [
+        { single: 53, label: 'Palma' },
+        { single: 54, label: '' },
+        { single: 55, label: 'EXPO-ARTE' },
+      ]},
+      { year: '1997', items: [
+        { single: 64, label: 'ARCALE' },
+        { single: 63, label: 'Proarte' },
+      ]},
+      { year: '1998', items: [
+        { single: 66, label: 'II ARCALE' },
+        { group: [78, 79], label: 'INTERART 98' },
+      ]},
+      { year: '1999', items: [
+        { single: 89, label: '' },
+        { group: [59, 60], label: 'ARTESEVILLA' },
+        { group: [86, 87, 88], label: 'Toledo' },
+        { group: [84, 85], label: 'Palma' },
+      ]},
+      { year: '2000', items: [
+        { group: [69, 70], label: 'ARTESEVILLA' },
+        { group: [80, 81], label: 'INTERART' },
+        { group: [94, 95], label: 'Palma' },
+      ]},
+      { year: '2001', items: [
+        { single: 68, label: 'V ARCALE' },
+        { group: [71, 72], label: 'ARTESEVILLA' },
+        { group: [82, 83, 97], label: 'INTERART' },
+        { single: 96, label: 'Currículum' },
+      ]},
+      { year: '2002', items: [
+        { group: [73, 74, 75], label: 'ARTESEVILLA' },
+      ]},
+      { year: '2003', items: [
+        { single: 100, label: 'Maratón' },
+        { single: 99, label: '' },
+        { single: 98, label: 'Aranjuez' },
+      ]},
+      { year: '~2004', items: [
+        { group: [101, 102], label: 'Aranjuez' },
+      ]},
+      { year: '2007', items: [
+        { single: 104, label: 'Catálogo' },
+        { single: 108, label: 'Fin de Siglo' },
+        { single: 105, label: 'Sevilla' },
+        { group: [106, 107], label: 'Feria Aranjuez' },
+      ]},
+      { year: '2008', items: [
+        { single: 110, label: 'Golf' },
+      ]},
+      { year: 's/f', items: [
+        { single: 111, label: 'Diccionario' },
+        { single: 103, label: 'Catálogo venta' },
+        { single: 109, label: 'Gabinetto' },
+      ]},
+    ];
 
-    function loadPressBatch() {
-      if (pressLoading || pressDone) return;
-      pressLoading = true;
-      document.getElementById('press-spinner').classList.add('active');
-      const grid = document.getElementById('press-masonry');
-      const batch = allPress.slice(pressIdx, pressIdx + 16);
-      setTimeout(() => {
-        batch.forEach((data, i) => {
-          const item = makeMasonryItem(data, pressIdx + i, 'press-masonry-item', idx => openLightbox('press', idx));
-          grid.appendChild(item);
-        });
-        pressIdx += batch.length;
-        pressLoading = false;
-        document.getElementById('press-spinner').classList.remove('active');
-        if (pressIdx >= allPress.length) {
-          pressDone = true;
-          document.getElementById('press-end').classList.add('visible');
-          pressIO.disconnect();
+    // Construir lista plana para lightbox
+    pressTimeline.forEach(yearBlock => {
+      yearBlock.items.forEach(item => {
+        if (item.single !== undefined) {
+          pressImages.push({ src: jpg(item.single), title: item.label || `Prensa ${item.single}`, n: item.single });
+        } else {
+          item.group.forEach(n => {
+            pressImages.push({ src: jpg(n), title: item.label ? `${item.label} — p.${item.group.indexOf(n)+1}` : `Prensa ${n}`, n });
+          });
         }
-      }, 350);
+      });
+    });
+
+    // Función lazy-load imagen
+    function lazyImg(src, alt, skH) {
+      const wrap = document.createElement('div');
+      const sk = document.createElement('div');
+      sk.className = 'skeleton';
+      sk.style.height = (skH || 180) + 'px';
+      wrap.appendChild(sk);
+      const img = document.createElement('img');
+      img.alt = alt;
+      img.dataset.src = src;
+      new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        img.src = img.dataset.src;
+        img.onload = () => { img.classList.add('loaded'); sk.remove(); };
+        img.onerror = () => { sk.style.animation = 'none'; sk.style.background = '#ccc8b8'; };
+      }, { rootMargin: '300px' }).observe(img);
+      wrap.appendChild(img);
+      return { wrap, img };
     }
 
-    const pressIO = new IntersectionObserver(([e]) => { if (e.isIntersecting) loadPressBatch(); }, { rootMargin: '300px' });
-    pressIO.observe(document.getElementById('press-sentinel'));
+    // Renderizar timeline
+    function renderPressTimeline() {
+      const container = document.getElementById('press-timeline');
+      pressTimeline.forEach(yearBlock => {
+        const block = document.createElement('div');
+        block.className = 'press-year-block';
+
+        const yearLabel = document.createElement('div');
+        yearLabel.className = 'press-year-label';
+        yearLabel.textContent = yearBlock.year;
+        block.appendChild(yearLabel);
+
+        const row = document.createElement('div');
+        row.className = 'press-year-items';
+
+        yearBlock.items.forEach(item => {
+          if (item.single !== undefined) {
+            // Item individual
+            const el = document.createElement('div');
+            el.className = 'press-single';
+            const lbIdx = pressImages.findIndex(p => p.n === item.single);
+            const { wrap, img } = lazyImg(jpg(item.single), item.label || `Prensa ${item.single}`, 220);
+            el.appendChild(wrap.querySelector('.skeleton'));
+            el.appendChild(img);
+            el.addEventListener('click', () => openLightbox('press', lbIdx));
+            row.appendChild(el);
+          } else {
+            // Grupo
+            const grp = document.createElement('div');
+            grp.className = 'press-group';
+            grp.dataset.pages = item.group.length;
+
+            if (item.label) {
+              const lbl = document.createElement('div');
+              lbl.className = 'press-group-label';
+              lbl.textContent = item.label;
+              grp.appendChild(lbl);
+            }
+
+            const pages = document.createElement('div');
+            pages.className = 'press-group-pages';
+
+            item.group.forEach(n => {
+              const page = document.createElement('div');
+              page.className = 'press-group-page';
+              const lbIdx = pressImages.findIndex(p => p.n === n);
+              const { wrap, img } = lazyImg(jpg(n), item.label || `Prensa ${n}`, 200);
+              page.appendChild(wrap.querySelector('.skeleton'));
+              page.appendChild(img);
+              page.addEventListener('click', () => openLightbox('press', lbIdx));
+              pages.appendChild(page);
+            });
+
+            grp.appendChild(pages);
+            row.appendChild(grp);
+          }
+        });
+
+        block.appendChild(row);
+        container.appendChild(block);
+      });
+    }
+
+    renderPressTimeline();
 
     // ════════════════════════════════════
     // ── LIGHTBOX UNIFICADO ──
@@ -1221,7 +1449,7 @@
     let lbMode = 'painting';
     let lbIndex = 0;
 
-    function currentList() { return lbMode === 'painting' ? allPaintings : allPress; }
+    function currentList() { return lbMode === 'painting' ? allPaintings : pressImages; }
 
     function openLightbox(mode, index) {
       lbMode = mode; lbIndex = index;
