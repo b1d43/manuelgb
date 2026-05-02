@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,7 +32,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── GRAIN OVERLAY ─── */
     body::before {
       content: '';
       position: fixed;
@@ -42,7 +42,6 @@
       opacity: 0.45;
     }
 
-    /* ─── ORNAMENTAL DIVIDER ─── */
     .ornament {
       text-align: center;
       color: var(--gold);
@@ -52,7 +51,6 @@
       opacity: 0.7;
     }
 
-    /* ─── NAVIGATION ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -93,7 +91,6 @@
 
     nav a:hover { color: var(--gold); }
 
-    /* ─── HERO ─── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -177,7 +174,6 @@
 
     .btn-scroll:hover { color: var(--gold); }
 
-    /* ─── MUSIC PLAYER ─── */
     .music-bar {
       position: fixed;
       bottom: 2rem;
@@ -249,7 +245,6 @@
       50% { transform: scaleY(1); }
     }
 
-    /* ─── SECTIONS ─── */
     section {
       padding: 7rem 0;
       opacity: 0;
@@ -285,109 +280,79 @@
 
     .section-title em { font-style: italic; color: var(--brown-mid); }
 
-    /* ─── BIOGRAPHY ─── */
-    #biografia {
-      background: var(--parchment);
-      border-top: 1px solid rgba(184, 151, 58, 0.15);
-      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+    /* ─── ESTUDIO ─── */
+    #estudio {
+      background: var(--brown-dark);
+      overflow: hidden;
     }
 
-    .bio-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 6rem;
-      align-items: start;
-    }
+    #estudio .section-label { color: var(--gold-light); }
+    #estudio .section-title { color: var(--cream); }
 
-    .bio-photo-wrap {
-      position: relative;
-    }
-
-    .bio-photo {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      display: block;
-      filter: sepia(15%);
-    }
-
-    .bio-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: linear-gradient(145deg, #d4c5a9, #c4b090);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--brown-light);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      gap: 1rem;
-    }
-
-    .bio-photo-placeholder svg { opacity: 0.4; }
-
-    .bio-photo-frame {
-      position: absolute;
-      inset: -12px;
-      border: 1px solid rgba(184, 151, 58, 0.35);
-      pointer-events: none;
-    }
-
-    .bio-photo-caption {
-      margin-top: 1.2rem;
-      font-size: 0.8rem;
-      color: var(--brown-light);
-      letter-spacing: 0.08em;
-      font-style: italic;
-      text-align: center;
-    }
-
-    .bio-text p {
-      margin-bottom: 1.4rem;
-      color: var(--brown-dark);
+    .studio-intro {
+      max-width: 560px;
+      color: rgba(245, 240, 232, 0.55);
       font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      font-style: italic;
     }
 
-    .bio-text p:first-of-type::first-letter {
+    .studio-photo {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .studio-photo-placa {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .studio-photo-fachada {
+      width: 100%;
+    }
+
+    .studio-photo-interior {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    .studio-photo img {
+      width: 100%;
+      display: block;
+      filter: sepia(10%) contrast(1.04);
+      transition: transform 0.8s ease;
+    }
+
+    .studio-photo:hover img { transform: scale(1.02); }
+
+    .studio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,12,4,0.65) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.8rem 2rem;
+    }
+
+    .studio-overlay-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      float: left;
-      line-height: 0.75;
-      margin: 0.1em 0.1em 0 0;
-      color: var(--gold);
+      color: var(--cream);
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.85;
+      letter-spacing: 0.05em;
     }
 
-    .bio-facts {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      border-top: 1px solid rgba(184, 151, 58, 0.25);
-      padding-top: 2rem;
-    }
-
-    .bio-fact-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
-    }
-
-    .bio-fact-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--brown-dark);
+    .studio-fullwidth {
+      margin-top: 1rem;
     }
 
     /* ─── GALERÍA ─── */
     #galeria { background: var(--cream); }
 
-    /* ─── MASONRY GALLERY ─── */
     .masonry-grid {
       columns: 4;
       column-gap: 14px;
@@ -410,7 +375,6 @@
       transition: transform 0.5s ease, filter 0.4s ease;
       filter: sepia(6%);
       opacity: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease, filter 0.4s ease;
     }
 
     .masonry-item img.loaded { opacity: 1; }
@@ -441,7 +405,6 @@
 
     .masonry-item:hover .masonry-caption { opacity: 1; transform: translateY(0); }
 
-    /* Skeleton loader */
     .masonry-item .skeleton {
       width: 100%;
       background: linear-gradient(90deg, #e8dcc8 25%, #f0e8d5 50%, #e8dcc8 75%);
@@ -454,7 +417,6 @@
       100% { background-position: -200% 0; }
     }
 
-    /* Sentinel para infinite scroll */
     #gallery-sentinel {
       height: 60px;
       display: flex;
@@ -489,6 +451,140 @@
 
     @media (max-width: 900px) { .masonry-grid { columns: 3; } }
     @media (max-width: 600px) { .masonry-grid { columns: 2; } }
+
+    /* ─── PRENSA TIMELINE ─── */
+    #prensa {
+      background: var(--parchment);
+      border-top: 1px solid rgba(184, 151, 58, 0.15);
+      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
+    }
+
+    .press-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .press-year-block {}
+
+    .press-year-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(184, 151, 58, 0.2);
+    }
+
+    .press-year-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .press-single {
+      cursor: pointer;
+      overflow: hidden;
+      flex: 0 0 auto;
+      width: calc(25% - 0.75rem);
+      min-width: 180px;
+      border: 1px solid rgba(184, 151, 58, 0.12);
+      background: var(--cream);
+      transition: box-shadow 0.3s, transform 0.3s;
+      position: relative;
+    }
+
+    .press-single:hover {
+      box-shadow: 0 6px 24px var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .press-single img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: sepia(15%) contrast(0.95);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .press-single img.loaded { opacity: 1; }
+
+    .press-single .skeleton {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    .press-group {
+      flex: 0 0 auto;
+      border: 2px solid rgba(184, 151, 58, 0.25);
+      background: rgba(245, 240, 232, 0.3);
+      padding: 0.5rem;
+      position: relative;
+    }
+
+    .press-group-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    .press-group-pages {
+      display: flex;
+      gap: 3px;
+    }
+
+    .press-group-page {
+      cursor: pointer;
+      overflow: hidden;
+      flex: 1;
+      position: relative;
+      min-width: 0;
+      background: var(--cream);
+      transition: opacity 0.2s;
+    }
+
+    .press-group-page:hover { opacity: 0.88; }
+
+    .press-group-page img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: sepia(15%) contrast(0.95);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .press-group-page img.loaded { opacity: 1; }
+
+    .press-group-page .skeleton {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    .press-group[data-pages="2"] {
+      width: calc(33% - 0.75rem);
+      min-width: 280px;
+    }
+
+    .press-group[data-pages="3"] {
+      width: calc(45% - 0.75rem);
+      min-width: 350px;
+    }
 
     /* ─── LIGHTBOX ─── */
     .lightbox {
@@ -572,80 +668,6 @@
 
     .lightbox-close:hover { color: var(--gold); }
 
-    /* ─── PRENSA ─── */
-    #prensa {
-      background: var(--parchment);
-      border-top: 1px solid rgba(184, 151, 58, 0.15);
-      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
-    }
-
-    .press-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .press-card {
-      background: var(--cream);
-      border: 1px solid rgba(184, 151, 58, 0.2);
-      overflow: hidden;
-      transition: box-shadow 0.3s, transform 0.3s;
-      cursor: pointer;
-    }
-
-    .press-card:hover {
-      box-shadow: 0 12px 40px var(--shadow);
-      transform: translateY(-4px);
-    }
-
-    .press-clipping {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      filter: sepia(20%) contrast(0.95);
-    }
-
-    .press-clipping-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: linear-gradient(145deg, #d8d0c0, #c8c0b0);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      color: var(--brown-light);
-    }
-
-    .press-clipping-placeholder svg { opacity: 0.3; }
-
-    .press-info {
-      padding: 1.2rem 1.4rem;
-    }
-
-    .press-source {
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-
-    .press-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      color: var(--brown-dark);
-      line-height: 1.3;
-      font-style: italic;
-    }
-
-    .press-date {
-      font-size: 0.78rem;
-      color: var(--brown-light);
-      margin-top: 0.6rem;
-    }
-
     /* ─── CONTACTO ─── */
     #contacto { background: var(--brown-dark); }
     #contacto .section-label { color: var(--gold-light); }
@@ -688,121 +710,6 @@
       letter-spacing: 0.12em;
     }
 
-    /* ─── PRENSA CRONOLÓGICA ─── */
-    .press-timeline { display: flex; flex-direction: column; gap: 3rem; }
-
-    .press-year-block {}
-
-    .press-year-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(184, 151, 58, 0.15);
-    }
-
-    .press-year-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-
-    /* Item individual */
-    .press-single {
-      cursor: pointer;
-      overflow: hidden;
-      flex: 0 0 auto;
-      width: calc(25% - 0.9rem);
-      border: 1px solid rgba(184, 151, 58, 0.12);
-      background: var(--cream);
-      transition: box-shadow 0.3s, transform 0.3s;
-      position: relative;
-    }
-
-    .press-single:hover {
-      box-shadow: 0 6px 24px var(--shadow);
-      transform: translateY(-3px);
-    }
-
-    .press-single img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: sepia(15%) contrast(0.95);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .press-single img.loaded { opacity: 1; }
-    .press-single .skeleton { width: 100%; background: linear-gradient(90deg,#d8d0c0 25%,#e8e0d0 50%,#d8d0c0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; }
-
-    /* Grupo díptico / tríptico */
-    .press-group {
-      flex: 0 0 auto;
-      border: 1px solid rgba(184, 151, 58, 0.3);
-      background: rgba(245, 240, 232, 0.04);
-      padding: 0.6rem;
-      position: relative;
-    }
-
-    .press-group-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.7;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .press-group-pages {
-      display: flex;
-      gap: 3px;
-    }
-
-    .press-group-page {
-      cursor: pointer;
-      overflow: hidden;
-      flex: 1;
-      position: relative;
-      min-width: 0;
-      background: var(--cream);
-      transition: opacity 0.2s;
-    }
-
-    .press-group-page:hover { opacity: 0.88; }
-
-    .press-group-page img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: sepia(15%) contrast(0.95);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .press-group-page img.loaded { opacity: 1; }
-    .press-group-page .skeleton { width: 100%; background: linear-gradient(90deg,#d8d0c0 25%,#e8e0d0 50%,#d8d0c0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite; }
-
-    /* Ancho de grupo según número de páginas */
-    .press-group[data-pages="2"] { width: calc(33% - 0.8rem); }
-    .press-group[data-pages="3"] { width: calc(42% - 0.8rem); }
-
-    @media (max-width: 900px) {
-      .press-single { width: calc(33% - 0.8rem); }
-      .press-group[data-pages="2"] { width: calc(50% - 0.6rem); }
-      .press-group[data-pages="3"] { width: calc(66% - 0.6rem); }
-    }
-    @media (max-width: 600px) {
-      .press-single { width: calc(50% - 0.6rem); }
-      .press-group[data-pages="2"], .press-group[data-pages="3"] { width: 100%; }
-    }
-
     /* ─── FOOTER ─── */
     footer {
       background: #160e05;
@@ -815,163 +722,47 @@
 
     footer span { color: var(--gold); opacity: 0.5; }
 
-    /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── RESPONSIVE ─── */
-    /* ─── ESTUDIO ─── */
-    #estudio {
-      background: var(--brown-dark);
-      overflow: hidden;
-    }
-
-    #estudio .section-label { color: var(--gold-light); }
-    #estudio .section-title { color: var(--cream); }
-    #estudio .ornament { color: var(--gold-light); }
-
-    .studio-intro {
-      max-width: 560px;
-      color: rgba(245, 240, 232, 0.55);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 3.5rem;
-      font-style: italic;
-    }
-
-    /* ─── ESTUDIO ─── */
-    #estudio {
-      background: var(--brown-dark);
-      overflow: hidden;
-    }
-
-    #estudio .section-label { color: var(--gold-light); }
-    #estudio .section-title { color: var(--cream); }
-
-    .studio-intro {
-      max-width: 560px;
-      color: rgba(245, 240, 232, 0.55);
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-      font-style: italic;
-    }
-
-    .studio-photo {
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1rem;
-    }
-
-    /* Foto 1 (placa): centrada, ancho moderado */
-    .studio-photo-placa {
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Foto 2 (fachada): ancho completo del container */
-    .studio-photo-fachada {
-      width: 100%;
-    }
-
-    /* Foto 3 (interior): ancho total, sin container para aprovechar panorámica */
-    .studio-photo-interior {
-      width: 100%;
-      margin-bottom: 0;
-    }
-
-    .studio-photo img {
-      width: 100%;
-      display: block;
-      filter: sepia(10%) contrast(1.04);
-      transition: transform 0.8s ease;
-    }
-
-    .studio-photo:hover img { transform: scale(1.02); }
-
-    .studio-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(20,12,4,0.65) 0%, transparent 50%);
-      display: flex;
-      align-items: flex-end;
-      padding: 1.8rem 2rem;
-    }
-
-    .studio-overlay-text {
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--cream);
-      font-size: 1rem;
-      font-style: italic;
-      opacity: 0.85;
-      letter-spacing: 0.05em;
-    }
-
-    /* Wrapper sin container para la foto interior panorámica */
-    .studio-fullwidth {
-      margin-top: 1rem;
-    }
-
-    /* ─── PRENSA MASONRY ─── */
-    .press-masonry {
-      columns: 4;
-      column-gap: 12px;
-    }
-
-    .press-masonry-item {
-      break-inside: avoid;
-      margin-bottom: 12px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--cream);
-      border: 1px solid rgba(184, 151, 58, 0.15);
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-
-    .press-masonry-item:hover {
-      box-shadow: 0 8px 30px var(--shadow);
-      transform: translateY(-3px);
-    }
-
-    .press-masonry-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      filter: sepia(18%) contrast(0.95);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .press-masonry-item img.loaded { opacity: 1; }
-
-    .press-masonry-item .skeleton {
-      width: 100%;
-      background: linear-gradient(90deg, #d8d0c0 25%, #e8e0d0 50%, #d8d0c0 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-
     @media (max-width: 900px) {
-      .press-masonry { columns: 3; }
+      .press-single {
+        width: calc(33% - 0.75rem);
+        min-width: 140px;
+      }
+      .press-group[data-pages="2"] {
+        width: calc(50% - 0.75rem);
+        min-width: 220px;
+      }
+      .press-group[data-pages="3"] {
+        width: calc(66% - 0.75rem);
+        min-width: 280px;
+      }
     }
-    @media (max-width: 600px) {
-      .press-masonry { columns: 2; }
-    }
+
     @media (max-width: 768px) {
       nav { padding: 0.8rem 1.5rem; }
       nav ul { gap: 1.2rem; }
-      .contact-visit { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-map-iframe { height: 260px; }
+    }
+
+    @media (max-width: 600px) {
+      .masonry-grid { columns: 2; }
+      .press-single {
+        width: calc(50% - 0.5rem);
+        min-width: 120px;
+      }
+      .press-group[data-pages="2"],
+      .press-group[data-pages="3"] {
+        width: 100%;
+        min-width: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- MÚSICA (iframe oculto de YouTube) -->
   <iframe id="vivaldi-audio"
     src=""
     style="display:none;"
@@ -979,7 +770,6 @@
     title="Música de fondo">
   </iframe>
 
-  <!-- PLAYER FLOTANTE -->
   <div class="music-bar" onclick="toggleMusic()">
     <button class="music-btn" aria-label="Reproducir / Pausar">▶</button>
     <span class="music-label">Vivaldi · Las Cuatro Estaciones</span>
@@ -988,7 +778,6 @@
     </div>
   </div>
 
-  <!-- NAVEGACIÓN -->
   <nav>
     <div class="nav-brand">Manuel García Benítez</div>
     <ul>
@@ -999,7 +788,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero" style="opacity:1; transform:none; padding:0;">
     <div class="hero-bg-text">Pintor</div>
     <div class="hero-content">
@@ -1011,7 +799,6 @@
     </div>
   </section>
 
-  <!-- EL ESTUDIO -->
   <section id="estudio">
     <div class="container">
       <p class="section-label">Aranjuez · Madrid</p>
@@ -1019,16 +806,12 @@
       <p class="studio-intro">
         Un espacio donde la luz y el color cobran vida. Bienvenido al estudio de García Benítez.
       </p>
-
-      <!-- Foto 1: placa de la entrada, centrada -->
       <div class="studio-photo studio-photo-placa">
         <img src="images/estudio1.jpg" alt="Placa del Estudio de Arte García Benítez" />
         <div class="studio-overlay">
           <span class="studio-overlay-text">G.ª Benítez · Estudio de Arte</span>
         </div>
       </div>
-
-      <!-- Foto 2: fachada, ancho completo -->
       <div class="studio-photo studio-photo-fachada">
         <img src="images/estudio2.jpg" alt="Fachada del estudio, calle Zerynthia 25, Aranjuez" />
         <div class="studio-overlay">
@@ -1036,8 +819,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Foto 3: interior panorámico, sin container para ocupar todo el ancho -->
     <div class="studio-fullwidth">
       <div class="studio-photo studio-photo-interior">
         <img src="images/estudio3.jpg" alt="Interior del estudio con obra expuesta" />
@@ -1048,15 +829,12 @@
     </div>
   </section>
 
-  <!-- GALERÍA -->
   <section id="galeria">
     <div class="container">
       <p class="section-label">Obra</p>
       <h2 class="section-title">Galería <em>de cuadros</em></h2>
       <div class="ornament">✦ · ✦</div>
-
       <div class="masonry-grid" id="masonry-grid"></div>
-
       <div id="gallery-sentinel">
         <div class="loading-spinner" id="spinner"></div>
         <p class="gallery-end-msg" id="gallery-end">✦ &nbsp; Fin de la colección &nbsp; ✦</p>
@@ -1064,7 +842,6 @@
     </div>
   </section>
 
-  <!-- PRENSA -->
   <section id="prensa">
     <div class="container">
       <p class="section-label">Reconocimientos</p>
@@ -1074,7 +851,6 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto">
     <div class="container">
       <p class="section-label">Contacto</p>
@@ -1089,12 +865,10 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 Manuel García Benítez · Aranjuez, Madrid <span>·</span> Todos los derechos reservados</p>
   </footer>
 
-  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
     <button class="lb-arrow lb-arrow-prev" id="lb-prev" onclick="lbPrev()">&#8592;</button>
@@ -1111,7 +885,9 @@
   <script>
     // ── Scroll reveal ──
     document.querySelectorAll('section:not(#hero)').forEach(s => {
-      new IntersectionObserver(([e]) => { if (e.isIntersecting) s.classList.add('visible'); }, { threshold: 0.1 }).observe(s);
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) s.classList.add('visible');
+      }, { threshold: 0.1 }).observe(s);
     });
 
     // ── Música ──
@@ -1123,47 +899,37 @@
       const btn = document.querySelector('.music-btn');
       if (!playing) {
         iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&controls=0&loop=1&playlist=${YOUTUBE_ID}`;
-        waves.classList.remove('paused'); btn.textContent = '⏸';
+        waves.classList.remove('paused');
+        btn.textContent = '⏸';
       } else {
-        iframe.src = ''; waves.classList.add('paused'); btn.textContent = '▶';
+        iframe.src = '';
+        waves.classList.add('paused');
+        btn.textContent = '▶';
       }
       playing = !playing;
     }
 
-    // ════════════════════════════════════
-    // ── UTILIDAD: crear item masonry ──
-    // ════════════════════════════════════
-    function makeMasonryItem(data, globalIdx, cssClass, onClickFn) {
-      const item = document.createElement('div');
-      item.className = cssClass;
-
-      const skH = 160 + Math.floor(Math.random() * 160);
-      const sk = document.createElement('div');
-      sk.className = 'skeleton';
-      sk.style.height = skH + 'px';
-      item.appendChild(sk);
-
-      const img = document.createElement('img');
-      img.alt = data.title;
-      img.dataset.src = data.src;
-
+    // ── Lazy load de imagen ──
+    function lazyLoadImg(img, skeleton) {
       new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         img.src = img.dataset.src;
-        img.onload = () => { img.classList.add('loaded'); sk.remove(); };
-        img.onerror = () => { sk.style.animation = 'none'; sk.style.background = '#ccc8b8'; };
-        e.target._io && e.target._io.disconnect();
-      }, { rootMargin: '200px' }).observe(img);
-
-      item.appendChild(img);
-      item.addEventListener('click', () => onClickFn(globalIdx));
-      return item;
+        img.onload = () => {
+          img.classList.add('loaded');
+          if (skeleton) skeleton.remove();
+        };
+        img.onerror = () => {
+          if (skeleton) {
+            skeleton.style.animation = 'none';
+            skeleton.style.background = '#ccc8b8';
+          }
+        };
+      }, { rootMargin: '300px' }).observe(img);
     }
 
     // ════════════════════════════════════
     // ── GALERÍA DE CUADROS ──
     // ════════════════════════════════════
-    // ⚠️ Ajusta TOTAL_PAINTINGS y PAINTINGS_FOLDER si es necesario
     const TOTAL_PAINTINGS = 82;
     const PAINTINGS_FOLDER = 'images/';
 
@@ -1182,8 +948,20 @@
       const batch = allPaintings.slice(paintIdx, paintIdx + 12);
       setTimeout(() => {
         batch.forEach((data, i) => {
-          const item = makeMasonryItem(data, paintIdx + i, 'masonry-item', idx => openLightbox('painting', idx));
-          // Añadir overlay con caption para cuadros
+          const item = document.createElement('div');
+          item.className = 'masonry-item';
+
+          const sk = document.createElement('div');
+          sk.className = 'skeleton';
+          sk.style.height = (160 + Math.floor(Math.random() * 160)) + 'px';
+          item.appendChild(sk);
+
+          const img = document.createElement('img');
+          img.alt = data.title;
+          img.dataset.src = data.src;
+          lazyLoadImg(img, sk);
+          item.appendChild(img);
+
           const overlay = document.createElement('div');
           overlay.className = 'masonry-overlay';
           const cap = document.createElement('span');
@@ -1191,6 +969,9 @@
           cap.textContent = `«${data.title}»`;
           overlay.appendChild(cap);
           item.appendChild(overlay);
+
+          const idx = paintIdx + i;
+          item.addEventListener('click', () => openLightbox('painting', idx));
           grid.appendChild(item);
         });
         paintIdx += batch.length;
@@ -1199,190 +980,314 @@
         if (paintIdx >= allPaintings.length) {
           paintDone = true;
           document.getElementById('gallery-end').classList.add('visible');
-          paintIO.disconnect();
         }
       }, 380);
     }
 
-    const paintIO = new IntersectionObserver(([e]) => { if (e.isIntersecting) loadPaintingBatch(); }, { rootMargin: '300px' });
+    const paintIO = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) loadPaintingBatch();
+    }, { rootMargin: '300px' });
     paintIO.observe(document.getElementById('gallery-sentinel'));
     loadPaintingBatch();
 
     // ════════════════════════════════════
-    // ── PRENSA: masonry simple con grupos
+    // ── PRENSA: Timeline con grupos ──
     // ════════════════════════════════════
-    // Lista plana en orden cronológico.
-    // Los que van juntos (portada+artículo) se marcan con group:'nombre'
-    // y misma posición consecutiva — se renderizarán pegados con borde.
-
-    const pressItems = [
-      // 1977-79
-      { n: 1 },
-      { n: 2, group: 'Paradigma' }, { n: 3, group: 'Paradigma' },
-      // 1980
-      { n: 4 },
-      // 1981
-      { n: 5 }, { n: 6 },
-      { n: 7, group: 'Reportaje' }, { n: 8, group: 'Reportaje' },
-      { n: 9 }, { n: 10 },
-      // 1982
-      { n: 11 },
-      // 1983
-      { n: 13 },
-      { n: 12, group: 'Los Galgos' }, { n: 14, group: 'Los Galgos' },
-      // 1984
-      { n: 15 }, { n: 16 }, { n: 17 },
-      // 1985
-      { n: 18, group: 'Libro' }, { n: 19, group: 'Libro' },
-      { n: 20 },
-      // 1986-87
-      { n: 21, group: 'Newland' }, { n: 22, group: 'Newland' }, { n: 23, group: 'Newland' },
-      // 1987
-      { n: 24 },
-      // 1988
-      { n: 25, group: 'Salamanca' }, { n: 26, group: 'Salamanca' },
-      { n: 27 },
-      // 1989
-      { n: 28 }, { n: 62 }, { n: 29 }, { n: 30 },
-      // 1990
-      { n: 31 },
-      // 1992
-      { n: 32 }, { n: 56 },
-      // 1993
-      { n: 33 },
-      // 1994
-      { n: 43 },
-      { n: 44, group: 'Gijón' }, { n: 45, group: 'Gijón' }, { n: 46, group: 'Gijón' },
-      // 1995
-      { n: 48 }, { n: 34 }, { n: 35 }, { n: 37 }, { n: 47 }, { n: 49 },
-      // 1996
-      { n: 53 }, { n: 54 }, { n: 55 },
-      // 1997
-      { n: 64 }, { n: 63 },
-      // 1998
-      { n: 66 },
-      { n: 78, group: 'INTERART 98' }, { n: 79, group: 'INTERART 98' },
-      // 1999
-      { n: 89 },
-      { n: 59, group: 'ARTESEVILLA 99' }, { n: 60, group: 'ARTESEVILLA 99' },
-      { n: 86, group: 'Toledo' }, { n: 87, group: 'Toledo' }, { n: 88, group: 'Toledo' },
-      { n: 84, group: 'Palma 99' }, { n: 85, group: 'Palma 99' },
-      // 2000
-      { n: 69, group: 'ARTESEVILLA 00' }, { n: 70, group: 'ARTESEVILLA 00' },
-      { n: 80, group: 'INTERART 00' }, { n: 81, group: 'INTERART 00' },
-      { n: 94, group: 'Palma 00' }, { n: 95, group: 'Palma 00' },
-      // 2001
-      { n: 68 },
-      { n: 71, group: 'ARTESEVILLA 01' }, { n: 72, group: 'ARTESEVILLA 01' },
-      { n: 82, group: 'INTERART 01' }, { n: 83, group: 'INTERART 01' }, { n: 97, group: 'INTERART 01' },
-      { n: 96 },
-      // 2002
-      { n: 73, group: 'ARTESEVILLA 02' }, { n: 74, group: 'ARTESEVILLA 02' }, { n: 75, group: 'ARTESEVILLA 02' },
-      // 2003
-      { n: 100 }, { n: 99 }, { n: 98 },
-      // ~2004
-      { n: 101, group: 'Aranjuez 04' }, { n: 102, group: 'Aranjuez 04' },
-      // 2007
-      { n: 104 }, { n: 108 }, { n: 105 },
-      { n: 106, group: 'Feria Aranjuez' }, { n: 107, group: 'Feria Aranjuez' },
-      // 2008
-      { n: 110 },
-      // s/f
-      { n: 111 }, { n: 103 }, { n: 109 },
+    const pressData = [
+      {
+        year: '1977-1979',
+        note: 'Primeras reseñas',
+        items: [
+          { type: 'single', n: 1 },
+          { type: 'group', label: 'Revista Paradigma', pages: [2, 3] }
+        ]
+      },
+      {
+        year: '1980',
+        note: 'Primeras exposiciones',
+        items: [
+          { type: 'single', n: 4 }
+        ]
+      },
+      {
+        year: '1981',
+        note: 'Consolidación en Madrid',
+        items: [
+          { type: 'single', n: 5 },
+          { type: 'single', n: 6 },
+          { type: 'group', label: 'Reportaje generacional', pages: [7, 8] },
+          { type: 'single', n: 9 },
+          { type: 'single', n: 10 }
+        ]
+      },
+      {
+        year: '1982',
+        note: 'Expansión nacional',
+        items: [
+          { type: 'single', n: 11 }
+        ]
+      },
+      {
+        year: '1983',
+        note: 'Madrid',
+        items: [
+          { type: 'single', n: 13 },
+          { type: 'group', label: 'Hotel Los Galgos', pages: [12, 14] }
+        ]
+      },
+      {
+        year: '1984-1985',
+        note: 'Pintores Asociados',
+        items: [
+          { type: 'single', n: 15 },
+          { type: 'single', n: 16 },
+          { type: 'single', n: 17 },
+          { type: 'group', label: 'Libro del Grupo', pages: [18, 19] },
+          { type: 'single', n: 20 }
+        ]
+      },
+      {
+        year: '1986-1987',
+        note: 'Apuntes para un paisaje',
+        items: [
+          { type: 'group', label: 'Exposición Newland', pages: [21, 22, 23] },
+          { type: 'single', n: 24 }
+        ]
+      },
+      {
+        year: '1988',
+        note: 'Salamanca',
+        items: [
+          { type: 'group', label: 'Caja Rural Salamanca', pages: [25, 26] },
+          { type: 'single', n: 27 }
+        ]
+      },
+      {
+        year: '1989',
+        note: 'Finales de los 80',
+        items: [
+          { type: 'single', n: 28 },
+          { type: 'single', n: 62 },
+          { type: 'single', n: 29 },
+          { type: 'single', n: 30 }
+        ]
+      },
+      {
+        year: '1990-1992',
+        note: 'Nuevos grupos',
+        items: [
+          { type: 'single', n: 31 },
+          { type: 'single', n: 32 },
+          { type: 'single', n: 56 }
+        ]
+      },
+      {
+        year: '1993-1994',
+        note: 'Grupo Mixto de Arte',
+        items: [
+          { type: 'single', n: 33 },
+          { type: 'single', n: 43 },
+          { type: 'group', label: 'Sala Monticelli, Gijón', pages: [44, 45, 46] }
+        ]
+      },
+      {
+        year: '1995',
+        note: 'Año prolífico',
+        items: [
+          { type: 'single', n: 48 },
+          { type: 'single', n: 34 },
+          { type: 'single', n: 35 },
+          { type: 'single', n: 37 },
+          { type: 'single', n: 47 },
+          { type: 'single', n: 49 }
+        ]
+      },
+      {
+        year: '1996-1997',
+        note: 'EXPO-ARTE y Grupo Proarte',
+        items: [
+          { type: 'single', n: 53 },
+          { type: 'single', n: 54 },
+          { type: 'single', n: 55 },
+          { type: 'single', n: 64 },
+          { type: 'single', n: 63 }
+        ]
+      },
+      {
+        year: '1998',
+        note: 'Ferias internacionales',
+        items: [
+          { type: 'single', n: 66 },
+          { type: 'group', label: 'INTERART 98, Valencia', pages: [78, 79] }
+        ]
+      },
+      {
+        year: '1999',
+        note: 'Toledo, Sevilla, Palma',
+        items: [
+          { type: 'single', n: 89 },
+          { type: 'group', label: 'ARTESEVILLA 99', pages: [59, 60] },
+          { type: 'group', label: 'Caja Rural Toledo', pages: [86, 87, 88] },
+          { type: 'group', label: 'Hotel Palas Atenea, Palma', pages: [84, 85] }
+        ]
+      },
+      {
+        year: '2000',
+        note: 'Siglo XXI',
+        items: [
+          { type: 'group', label: 'ARTESEVILLA 2000', pages: [69, 70] },
+          { type: 'group', label: 'INTERART 2000, Valencia', pages: [80, 81] },
+          { type: 'group', label: 'Pintores Fin de Siglo, Palma', pages: [94, 95] }
+        ]
+      },
+      {
+        year: '2001',
+        note: 'Consagración internacional',
+        items: [
+          { type: 'single', n: 68 },
+          { type: 'group', label: 'ARTESEVILLA 2001', pages: [71, 72] },
+          { type: 'group', label: 'INTERART 2001, Valencia', pages: [82, 83, 97] },
+          { type: 'single', n: 96 }
+        ]
+      },
+      {
+        year: '2002',
+        note: 'Últimas ferias',
+        items: [
+          { type: 'group', label: 'ARTESEVILLA 2002', pages: [73, 74, 75] }
+        ]
+      },
+      {
+        year: '2003-2004',
+        note: 'Estudio propio en Aranjuez',
+        items: [
+          { type: 'single', n: 100 },
+          { type: 'single', n: 99 },
+          { type: 'single', n: 98 },
+          { type: 'group', label: 'Aranjuez, Variaciones', pages: [101, 102] }
+        ]
+      },
+      {
+        year: '2007-2008',
+        note: 'Gabinete Artístico',
+        items: [
+          { type: 'single', n: 104 },
+          { type: 'single', n: 108 },
+          { type: 'single', n: 105 },
+          { type: 'group', label: 'Feria de Artesanía Aranjuez', pages: [106, 107] },
+          { type: 'single', n: 110 }
+        ]
+      },
+      {
+        year: 's/f',
+        note: 'Documentación complementaria',
+        items: [
+          { type: 'single', n: 111 },
+          { type: 'single', n: 103 },
+          { type: 'single', n: 109 }
+        ]
+      }
     ];
 
-    // Lista plana para lightbox (mismo orden)
-    const pressImages = pressItems.map(item => ({
-      src: `images/prensa${item.n}.jpg`,
-      title: item.group ? `${item.group} — prensa${item.n}` : `Prensa ${item.n}`
-    }));
+    let pressImages = [];
+    pressData.forEach(yearBlock => {
+      yearBlock.items.forEach(item => {
+        if (item.type === 'single') {
+          pressImages.push({
+            src: `images/prensa${item.n}.jpg`,
+            title: `Prensa ${item.n} · ${yearBlock.year}`
+          });
+        } else if (item.type === 'group') {
+          item.pages.forEach(n => {
+            pressImages.push({
+              src: `images/prensa${n}.jpg`,
+              title: `${item.label} · ${yearBlock.year}`
+            });
+          });
+        }
+      });
+    });
 
-    function renderPressMasonry() {
-      const grid = document.getElementById('press-masonry');
-      let i = 0;
-      while (i < pressItems.length) {
-        const item = pressItems[i];
+    function renderPressTimeline() {
+      const timeline = document.getElementById('press-timeline');
+      let globalIdx = 0;
 
-        if (item.group) {
-          // Reunir todos los consecutivos del mismo grupo
-          const groupName = item.group;
-          const groupIndices = [];
-          let j = i;
-          while (j < pressItems.length && pressItems[j].group === groupName) {
-            groupIndices.push(j);
-            j++;
-          }
+      pressData.forEach(yearBlock => {
+        const yearDiv = document.createElement('div');
+        yearDiv.className = 'press-year-block';
 
-          // Crear wrapper de grupo
-          const grpWrap = document.createElement('div');
-          grpWrap.className = 'press-masonry-group';
-          grpWrap.style.breakInside = 'avoid';
-          grpWrap.style.marginBottom = '14px';
+        const yearLabel = document.createElement('div');
+        yearLabel.className = 'press-year-label';
+        yearLabel.textContent = yearBlock.year + (yearBlock.note ? ` · ${yearBlock.note}` : '');
+        yearDiv.appendChild(yearLabel);
 
-          const grpLabel = document.createElement('div');
-          grpLabel.className = 'press-group-tag';
-          grpLabel.textContent = groupName;
-          grpWrap.appendChild(grpLabel);
+        const yearItems = document.createElement('div');
+        yearItems.className = 'press-year-items';
 
-          const grpPages = document.createElement('div');
-          grpPages.className = 'press-group-pages';
-
-          groupIndices.forEach(idx => {
-            const src = `images/prensa${pressItems[idx].n}.jpg`;
-            const page = document.createElement('div');
-            page.className = 'press-group-page';
+        yearBlock.items.forEach(item => {
+          if (item.type === 'single') {
+            const el = document.createElement('div');
+            el.className = 'press-single';
 
             const sk = document.createElement('div');
             sk.className = 'skeleton';
-            sk.style.height = '180px';
-            page.appendChild(sk);
+            el.appendChild(sk);
 
             const img = document.createElement('img');
-            img.alt = groupName;
-            img.dataset.src = src;
-            new IntersectionObserver(([e]) => {
-              if (!e.isIntersecting) return;
-              img.src = img.dataset.src;
-              img.onload = () => { img.classList.add('loaded'); sk.remove(); };
-              img.onerror = () => { sk.style.animation = 'none'; sk.style.background = '#ccc8b8'; };
-            }, { rootMargin: '300px' }).observe(img);
-            page.appendChild(img);
-            page.addEventListener('click', () => openLightbox('press', idx));
-            grpPages.appendChild(page);
-          });
+            img.alt = `Prensa ${item.n}`;
+            img.dataset.src = `images/prensa${item.n}.jpg`;
+            lazyLoadImg(img, sk);
+            el.appendChild(img);
 
-          grpWrap.appendChild(grpPages);
-          grid.appendChild(grpWrap);
-          i = j;
+            const idx = globalIdx;
+            el.addEventListener('click', () => openLightbox('press', idx));
+            yearItems.appendChild(el);
+            globalIdx++;
 
-        } else {
-          // Item individual normal
-          const el = document.createElement('div');
-          el.className = 'press-masonry-item';
+          } else if (item.type === 'group') {
+            const grpWrap = document.createElement('div');
+            grpWrap.className = 'press-group';
+            grpWrap.setAttribute('data-pages', item.pages.length);
 
-          const sk = document.createElement('div');
-          sk.className = 'skeleton';
-          sk.style.height = (160 + Math.floor(Math.random() * 120)) + 'px';
-          el.appendChild(sk);
+            const grpLabel = document.createElement('div');
+            grpLabel.className = 'press-group-label';
+            grpLabel.textContent = item.label;
+            grpWrap.appendChild(grpLabel);
 
-          const img = document.createElement('img');
-          img.alt = `Prensa ${item.n}`;
-          img.dataset.src = `images/prensa${item.n}.jpg`;
-          new IntersectionObserver(([e]) => {
-            if (!e.isIntersecting) return;
-            img.src = img.dataset.src;
-            img.onload = () => { img.classList.add('loaded'); sk.remove(); };
-            img.onerror = () => { sk.style.animation = 'none'; sk.style.background = '#ccc8b8'; };
-          }, { rootMargin: '300px' }).observe(img);
-          el.appendChild(img);
-          el.addEventListener('click', () => openLightbox('press', i));
-          grid.appendChild(el);
-          i++;
-        }
-      }
+            const grpPages = document.createElement('div');
+            grpPages.className = 'press-group-pages';
+
+            item.pages.forEach(n => {
+              const page = document.createElement('div');
+              page.className = 'press-group-page';
+
+              const sk = document.createElement('div');
+              sk.className = 'skeleton';
+              page.appendChild(sk);
+
+              const img = document.createElement('img');
+              img.alt = item.label;
+              img.dataset.src = `images/prensa${n}.jpg`;
+              lazyLoadImg(img, sk);
+              page.appendChild(img);
+
+              const idx = globalIdx;
+              page.addEventListener('click', () => openLightbox('press', idx));
+              grpPages.appendChild(page);
+              globalIdx++;
+            });
+
+            grpWrap.appendChild(grpPages);
+            yearItems.appendChild(grpWrap);
+          }
+        });
+
+        yearDiv.appendChild(yearItems);
+        timeline.appendChild(yearDiv);
+      });
     }
 
-    renderPressMasonry();
+    renderPressTimeline();
 
     // ════════════════════════════════════
     // ── LIGHTBOX UNIFICADO ──
@@ -1390,10 +1295,13 @@
     let lbMode = 'painting';
     let lbIndex = 0;
 
-    function currentList() { return lbMode === 'painting' ? allPaintings : pressImages; }
+    function currentList() {
+      return lbMode === 'painting' ? allPaintings : pressImages;
+    }
 
     function openLightbox(mode, index) {
-      lbMode = mode; lbIndex = index;
+      lbMode = mode;
+      lbIndex = index;
       updateLightbox();
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1409,18 +1317,29 @@
       const data = list[lbIndex];
       const lb = document.getElementById('lightbox-img');
       lb.style.opacity = 0;
-      lb.src = data.src; lb.alt = data.title;
-      lb.onload = () => { lb.style.transition = 'opacity 0.3s'; lb.style.opacity = 1; };
+      lb.src = data.src;
+      lb.alt = data.title;
+      lb.onload = () => {
+        lb.style.transition = 'opacity 0.3s';
+        lb.style.opacity = 1;
+      };
       document.getElementById('lightbox-caption').textContent = `«${data.title}»`;
       document.getElementById('lb-counter').textContent = `${lbIndex + 1} / ${list.length}`;
       document.getElementById('lb-prev').style.opacity = lbIndex === 0 ? '0.3' : '1';
       document.getElementById('lb-next').style.opacity = lbIndex === list.length - 1 ? '0.3' : '1';
     }
 
-    function lbPrev() { if (lbIndex > 0) { lbIndex--; updateLightbox(); } }
-    function lbNext() { if (lbIndex < currentList().length - 1) { lbIndex++; updateLightbox(); } }
+    function lbPrev() {
+      if (lbIndex > 0) { lbIndex--; updateLightbox(); }
+    }
 
-    document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+    function lbNext() {
+      if (lbIndex < currentList().length - 1) { lbIndex++; updateLightbox(); }
+    }
+
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
 
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
